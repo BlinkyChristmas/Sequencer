@@ -109,7 +109,7 @@ class SequenceDocument: NSDocument {
     convenience init(url:URL) throws {
         self.init()
         let data = try Data(contentsOf: url)
-        try read(from: data, ofType:  UTType.sequence.identifier)
+        try read(from: data, ofType:  BlinkyGlobals.sequenceIdentifier)
     }
 }
 

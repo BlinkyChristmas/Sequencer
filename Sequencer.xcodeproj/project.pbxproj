@@ -41,8 +41,6 @@
 		56A8C1162C1A61E30032E1B5 /* ScrollView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1152C1A61E30032E1B5 /* ScrollView+extensions.swift */; };
 		56A8C1192C1B35480032E1B5 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1182C1B35480032E1B5 /* BackgroundView.swift */; };
 		56A8C11B2C1B37880032E1B5 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C11A2C1B37880032E1B5 /* BorderedView.swift */; };
-		56A8C11D2C1B6F410032E1B5 /* ImportDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C11C2C1B6F410032E1B5 /* ImportDialog.swift */; };
-		56A8C11F2C1B6FA00032E1B5 /* ImportDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C11E2C1B6FA00032E1B5 /* ImportDialog.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,8 +81,6 @@
 		56A8C1152C1A61E30032E1B5 /* ScrollView+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+extensions.swift"; sourceTree = "<group>"; };
 		56A8C1182C1B35480032E1B5 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		56A8C11A2C1B37880032E1B5 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
-		56A8C11C2C1B6F410032E1B5 /* ImportDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDialog.swift; sourceTree = "<group>"; };
-		56A8C11E2C1B6FA00032E1B5 /* ImportDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportDialog.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +183,6 @@
 			children = (
 				56A8C0FD2C19EDC60032E1B5 /* SettingsDialog.swift */,
 				56A8C0FF2C19F0F20032E1B5 /* SettingsDialog.xib */,
-				56A8C11C2C1B6F410032E1B5 /* ImportDialog.swift */,
-				56A8C11E2C1B6FA00032E1B5 /* ImportDialog.xib */,
 			);
 			path = Dialogs;
 			sourceTree = "<group>";
@@ -298,7 +292,6 @@
 				56A8C0CC2C19BDEE0032E1B5 /* Assets.xcassets in Resources */,
 				56A8C0CF2C19BDEE0032E1B5 /* Base in Resources */,
 				56A8C0CA2C19BDED0032E1B5 /* Base in Resources */,
-				56A8C11F2C1B6FA00032E1B5 /* ImportDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +313,6 @@
 				56A8C0ED2C19CB4C0032E1B5 /* CGPoint+extensions.swift in Sources */,
 				56A8C0FB2C19D9E50032E1B5 /* GeneralError.swift in Sources */,
 				56A8C1062C1A0CF70032E1B5 /* MusicPlayer.swift in Sources */,
-				56A8C11D2C1B6F410032E1B5 /* ImportDialog.swift in Sources */,
 				56A8C0F12C19CBDB0032E1B5 /* ContiguousBytes+extensions.swift in Sources */,
 				56A8C0E52C19CA750032E1B5 /* URL+extensions.swift in Sources */,
 				56A8C0C52C19BDED0032E1B5 /* AppDelegate.swift in Sources */,

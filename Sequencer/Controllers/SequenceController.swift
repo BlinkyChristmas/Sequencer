@@ -9,6 +9,7 @@ class SequenceController : NSWindowController {
     }
     
     var ourRulerName = randomAlphanumericString(5)
+    var durationObserver:NSKeyValueObservation?
     
     @IBOutlet var musicPlayer:MusicPlayer!
     @IBOutlet var scrollLeft:SynchronizedScollView!
@@ -32,9 +33,14 @@ class SequenceController : NSWindowController {
     }
     @objc dynamic var seekTime = 0.0
     @objc dynamic var topStatus:String?
-    
 }
 
+// ========== Window Delegate
+extension SequenceController : NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        musicPlayer.stop()
+    }
+}
 // ========== Convenience symbols
 extension SequenceController {
     @objc dynamic var settingsData:SettingsData { (NSApp.delegate as! AppDelegate).settingsData }
@@ -53,6 +59,16 @@ extension SequenceController {
         scrollRight.hasHorizontalRuler = true
         scrollRight.rulersVisible = true
         scrollRight.registerScale(dotsPerSecond: dotsPerSecond, name: ourRulerName, abbreviation: ourRulerName)
+        self.musicPlayer.volume = 0.25
+        durationObserver = self.musicPlayer.observe(\.duration, changeHandler: { (_, _) in
+            self.musicLoaded()
+            self.durationObserver?.invalidate()
+            self.durationObserver = nil
+        })
+        musicPlayer.loadMusic(url: (NSApp.delegate as! AppDelegate).settingsData.musicDirectory!.appending(path: (self.document as! SequenceDocument).musicName!).appendingPathExtension(for: .wav))
     }
     
+    func musicLoaded() {
+        // Put into here, anything that should happen on music load
+    }
 }

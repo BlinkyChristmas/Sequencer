@@ -363,3 +363,37 @@ class SettingsData : NSObject {
         }
     }
 }
+
+extension SettingsData {
+    @objc dynamic var bundleDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.bundleSubpath)
+    }
+    
+    @objc dynamic var visualizationDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.visualizationSubpath)
+    }
+    
+    @objc dynamic var sequenceDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.sequenceSubpath)
+    }
+    
+    @objc dynamic var lightDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.lightSubpath)
+    }
+    
+    @objc dynamic var configurationDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.configurationSubpath)
+    }
+    
+    @objc dynamic var shuffleDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.shuffleSubpath)
+    }
+    
+    @objc dynamic var patternDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.patternSubpath)
+    }
+    
+    @objc dynamic var imageDirectory:URL? {
+        homeDirectory?.appending(path: BlinkyGlobals.imageSubpath)
+    }
+}

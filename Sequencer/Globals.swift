@@ -148,7 +148,7 @@ extension UTType {
         UTType(filenameExtension: "shuffle", conformingTo: .xml)!
     }
     static var diybseq:UTType {
-        UTType(filenameExtension: "diybseq", conformingTo: .xml)!
+        UTType(filenameExtension: "diybseq")!
     }
 }
 
@@ -181,14 +181,14 @@ struct BlinkyGlobals {
     static let infoFontColor = NSColor.white
     
     // Directory layout
-    static let bundleSubpath = URL(fileURLWithPath: "Bundles")
-    static let visualizationSubpath =  URL(fileURLWithPath: "Visualizations")
-    static let sequenceSubpath =  URL(fileURLWithPath: "Sequences")
-    static let lightSubpath =  URL(fileURLWithPath: "LightData")
-    static let configurationSubpath =  URL(fileURLWithPath: "Configuration")
-    static let shuffleSubpath =  URL(fileURLWithPath: "Shuffle")
-    static let patternSubpath =  URL(fileURLWithPath: "Patterns")
-    static let imageSubpath =  URL(fileURLWithPath: "Images")
+    static let bundleSubpath =  "Bundles"
+    static let visualizationSubpath =  "Visualizations"
+    static let sequenceSubpath =   "Sequences"
+    static let lightSubpath =   "LightData"
+    static let configurationSubpath =  "Configuration"
+    static let shuffleSubpath =  "Shuffle"
+    static let patternSubpath =  "Patterns"
+    static let imageSubpath =   "Images"
     
     // Grids
     static let scratchGridName = "Scratch"
