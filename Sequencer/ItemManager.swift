@@ -100,7 +100,7 @@ class ItemManager : NSObject {
     
     func messingRound() throws  {
         
-        var queues = [DispatchQueue]()
+        //var queues = [DispatchQueue]()
         let queue = DispatchConcurrentQueue(label: "renderqueue")
         for controller in detailControllers {
             let imageBase = (NSApp.delegate as! AppDelegate).settingsData.imageDirectory!

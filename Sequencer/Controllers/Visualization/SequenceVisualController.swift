@@ -51,17 +51,17 @@ extension SequenceVisualController {
         for controller in itemManager.detailControllers {
             if controller.lightBundle != nil {
                 var transform:AffineTransform = .identity
-                if controller.sequenceItem!.visualOrigin != NSPoint.zero {
-                    transform.append(AffineTransform(translationByX: controller.sequenceItem!.visualOrigin.x, byY: controller.sequenceItem!.visualOrigin.y))
-                }
-                //Swift.print(" SequenceItem: \(controller.sequenceItem!.name!) has a scale of \(controller.sequenceItem!.visualScale)")
-                
                 if controller.sequenceItem!.visualScale != 1.0 {
                     transform.append(AffineTransform(scale: controller.sequenceItem!.visualScale))
                     
                 }
                 
-                if baseTransform != nil {
+                if controller.sequenceItem!.visualOrigin != NSPoint.zero {
+                    transform.append(AffineTransform(translationByX: controller.sequenceItem!.visualOrigin.x, byY: controller.sequenceItem!.visualOrigin.y))
+                }
+                //Swift.print(" SequenceItem: \(controller.sequenceItem!.name!) has a scale of \(controller.sequenceItem!.visualScale)")
+                
+               if baseTransform != nil {
                     transform.append(baseTransform!)
                 }
                 

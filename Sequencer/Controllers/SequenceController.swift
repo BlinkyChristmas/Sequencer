@@ -187,9 +187,11 @@ extension SequenceController {
     @IBAction func showVisualizer( _ sender: Any?) {
         sequenceVisualizationController.showWindow(sender)
     }
+    /*
     @IBAction func showVisualAccessory(_ sender: Any?) {
         accessoryVisualizationController.showWindow(self)
     }
+     */
 }
 // ======= Time Grid Dialogs
 extension SequenceController {
@@ -522,3 +524,4 @@ extension SequenceController {
         }
     }
 }
+

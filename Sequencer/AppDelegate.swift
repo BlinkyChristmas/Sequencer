@@ -85,6 +85,38 @@ extension AppDelegate {
     }
 
     @IBAction func newDocument( _ sender: Any?) {
-      // let value =  NSApp.runModal(for: self.newSequenceDialog.window!)
+        let value =  NSApp.runModal(for: self.newSequenceDialog.window!)
+        guard value == .OK else { return}
+        do {
+            let untitled = (try NSDocumentController.shared.makeUntitledDocument(ofType:BlinkyGlobals.sequenceIdentifier )) as! SequenceDocument
+            let visualalization = try Visualization(url: newSequenceDialog.selectedVisualization!, bundles: self.bundleDictionay)
+            var dataOffset = 0
+            untitled.visualizationName = visualalization.name
+            untitled.visualScale = visualalization.scale
+            untitled.musicName = self.newSequenceDialog.music
+            for item in visualalization.visualItems {
+                let seqItem = SeqItem()
+                seqItem.name = item.name
+                seqItem.bundleType = item.bundleType
+                seqItem.dataOffset = dataOffset
+                dataOffset = dataOffset + bundleDictionay[seqItem.bundleType!]!.count
+                seqItem.visualScale = item.scale
+                seqItem.visualOrigin = item.origin
+                untitled.sequenceItems.append(seqItem)
+            }
+            // Now, get any timegrids
+            if self.newSequenceDialog.selectedImport != nil {
+                let sequence = try SequenceDocument(url: self.newSequenceDialog.selectedImport!)
+                untitled.timeGrids = sequence.timeGrids
+            }
+            untitled.makeWindowControllers()
+            untitled.showWindows()
+            NSDocumentController.shared.addDocument(untitled)
+            untitled.updateChangeCount(.changeDone)
+        }
+        catch{
+            NSAlert(error: GeneralError(errorMessage: "Unable to create new sequence")).runModal()
+        }
+        
     }
 }
