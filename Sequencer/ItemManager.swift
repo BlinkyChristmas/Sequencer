@@ -76,9 +76,31 @@ class ItemManager : NSObject {
         }
     }
     
+    func messingRound2() throws {
+        var tasks = [Task<(),Never>]()
+        for controller in detailControllers {
+            let imageBase = (NSApp.delegate as! AppDelegate).settingsData.imageDirectory!
+            let patternBase = (NSApp.delegate as! AppDelegate).settingsData.patternDirectory!
+        
+            let doc = master!.document as! SequenceDocument
+            let bundles = (NSApp.delegate as! AppDelegate).bundleDictionay
+            guard let bundleName  = controller.sequenceItem?.bundleType  else {
+                throw GeneralError(errorMessage: "No bundle type defined for: \(controller.sequenceItem?.name ?? "")")
+            }
+            guard let ourBundle = bundles[bundleName] else {
+                throw GeneralError(errorMessage: "Can not find bundle type: \(bundleName)")
+            }
+             let task = Task {
+                 _ = try?  await controller.renderData(masterController: self.master!, document: doc, ourBundle: ourBundle, imageBase: imageBase, patternBase: patternBase)
+            }
+            tasks.append(task)
+        }
+        
+    }
+    
     func messingRound() throws  {
         
-        //var queues = [DispatchQueue]()
+        var queues = [DispatchQueue]()
         let queue = DispatchConcurrentQueue(label: "renderqueue")
         for controller in detailControllers {
             let imageBase = (NSApp.delegate as! AppDelegate).settingsData.imageDirectory!
