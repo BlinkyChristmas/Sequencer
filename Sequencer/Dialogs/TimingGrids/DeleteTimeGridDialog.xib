@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DeleteTimeGridDialog" customModule="Sequencer" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="QvC-M9-y7g" id="rq5-z1-J45"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="550" height="90"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="5120" height="1415"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-z2-qG6">
+                        <rect key="frame" x="18" y="62" width="63" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Time Grid" id="cBJ-Sv-yTg">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8rW-f3-c7Y">
+                        <rect key="frame" x="86" y="58" width="447" height="23"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="So7-QA-XVx">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>Item 1</string>
+                                <string>Item 2</string>
+                                <string>Item 3</string>
+                            </objectValues>
+                        </comboBoxCell>
+                        <connections>
+                            <binding destination="mHb-8A-3YK" name="contentValues" keyPath="arrangedObjects" id="CfN-J0-uNl"/>
+                            <binding destination="-2" name="value" keyPath="selectedGrid" previousBinding="CfN-J0-uNl" id="h3t-qc-7QQ"/>
+                        </connections>
+                    </comboBox>
+                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFt-xG-UEh">
+                        <rect key="frame" x="401" y="13" width="136" height="32"/>
+                        <buttonCell key="cell" type="push" title="Delete Time Grid" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tBa-Hu-4wc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="bNp-vv-pKL"/>
+                            <binding destination="-2" name="enabled" keyPath="selectedGrid" id="1uA-Jt-qa0">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dVG-Eh-q29">
+                        <rect key="frame" x="327" y="13" width="76" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q9W-7P-rIa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="a8T-Li-lLK"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8rW-f3-c7Y" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="4if-tV-YiQ"/>
+                    <constraint firstItem="KFt-xG-UEh" firstAttribute="top" secondItem="8rW-f3-c7Y" secondAttribute="bottom" constant="20" symbolic="YES" id="92y-jW-eac"/>
+                    <constraint firstAttribute="bottom" secondItem="KFt-xG-UEh" secondAttribute="bottom" constant="20" symbolic="YES" id="C2u-gj-6bs"/>
+                    <constraint firstItem="KFt-xG-UEh" firstAttribute="trailing" secondItem="8rW-f3-c7Y" secondAttribute="trailing" id="DC0-0o-5ns"/>
+                    <constraint firstItem="8rW-f3-c7Y" firstAttribute="leading" secondItem="tCs-z2-qG6" secondAttribute="trailing" constant="8" symbolic="YES" id="Ibs-Et-jPP"/>
+                    <constraint firstItem="KFt-xG-UEh" firstAttribute="firstBaseline" secondItem="dVG-Eh-q29" secondAttribute="firstBaseline" id="MrM-ah-6oi"/>
+                    <constraint firstItem="KFt-xG-UEh" firstAttribute="leading" secondItem="dVG-Eh-q29" secondAttribute="trailing" constant="12" symbolic="YES" id="QmL-b7-Edt"/>
+                    <constraint firstAttribute="trailing" secondItem="8rW-f3-c7Y" secondAttribute="trailing" constant="20" symbolic="YES" id="b9d-77-d0L"/>
+                    <constraint firstItem="8rW-f3-c7Y" firstAttribute="firstBaseline" secondItem="tCs-z2-qG6" secondAttribute="firstBaseline" id="h7y-6d-le2"/>
+                    <constraint firstItem="tCs-z2-qG6" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="kCo-Ia-MkT"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="t78-Ho-cNc"/>
+            </connections>
+            <point key="canvasLocation" x="175" y="23"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="FUE-QO-qMb"/>
+        <arrayController objectClassName="String" editable="NO" id="mHb-8A-3YK">
+            <classReference key="objectClass" className="String"/>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="timeGridNames" id="9DW-mR-rjh"/>
+            </connections>
+        </arrayController>
+    </objects>
+</document>

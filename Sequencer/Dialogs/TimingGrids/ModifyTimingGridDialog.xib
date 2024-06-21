@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ModifyTimingGridDialog" customModule="Sequencer" customModuleProvider="target">
+            <connections>
+                <outlet property="groupBox" destination="h4Q-K6-bnf" id="3My-aF-pq0"/>
+                <outlet property="referenceGridController" destination="FZ4-hy-ohp" id="6ge-dZ-myN"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="qbm-gk-KVz"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="2010" y="639" width="707" height="280"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="5120" height="1415"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="707" height="280"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eRR-6e-MaC">
+                        <rect key="frame" x="618" y="13" width="76" height="32"/>
+                        <buttonCell key="cell" type="push" title="Modify" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FBe-Aj-DKS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="YO3-Gt-DkG"/>
+                            <binding destination="-2" name="enabled" keyPath="selectedGrid" id="Wa1-P1-Bbv">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uzb-9C-Mbg">
+                        <rect key="frame" x="544" y="13" width="76" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ffe-Ga-x5B">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="LTy-HD-Bgt"/>
+                        </connections>
+                    </button>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZ1-0w-gxY">
+                        <rect key="frame" x="18" y="242" width="63" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Time Grid" id="WIZ-My-j5Y">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xp0-db-ct7">
+                        <rect key="frame" x="86" y="238" width="604" height="23"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="AHd-iW-eJd">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>Item 1</string>
+                                <string>Item 2</string>
+                                <string>Item 3</string>
+                            </objectValues>
+                        </comboBoxCell>
+                        <connections>
+                            <binding destination="5Hu-kP-yQ5" name="content" keyPath="arrangedObjects" id="JB5-fM-Ylj"/>
+                            <binding destination="-2" name="value" keyPath="selectedGrid" previousBinding="JB5-fM-Ylj" id="Ep3-k0-HCF"/>
+                        </connections>
+                    </comboBox>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BPa-Qd-7Ba">
+                        <rect key="frame" x="18" y="215" width="75" height="18"/>
+                        <buttonCell key="cell" type="radio" title="Replace" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="UuR-Wk-LCh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setAppendingStatus:" target="-2" id="YDp-YT-fny"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kWA-RW-evR">
+                        <rect key="frame" x="99" y="215" width="74" height="18"/>
+                        <buttonCell key="cell" type="radio" title="Append" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="xKO-ny-Kbm">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setAppendingStatus:" target="-2" id="lfl-tb-Kcw"/>
+                        </connections>
+                    </button>
+                    <box title="Reference Grid" translatesAutoresizingMaskIntoConstraints="NO" id="h4Q-K6-bnf">
+                        <rect key="frame" x="17" y="56" width="673" height="152"/>
+                        <view key="contentView" id="Btp-Pj-qhf">
+                            <rect key="frame" x="4" y="5" width="665" height="132"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                    </box>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xp0-db-ct7" firstAttribute="firstBaseline" secondItem="iZ1-0w-gxY" secondAttribute="firstBaseline" id="9mI-qE-cs7"/>
+                    <constraint firstAttribute="bottom" secondItem="eRR-6e-MaC" secondAttribute="bottom" constant="20" symbolic="YES" id="Dhu-pE-dXv"/>
+                    <constraint firstItem="h4Q-K6-bnf" firstAttribute="top" secondItem="BPa-Qd-7Ba" secondAttribute="bottom" constant="8" symbolic="YES" id="J0p-vp-68L"/>
+                    <constraint firstItem="iZ1-0w-gxY" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="MV0-0S-dmx"/>
+                    <constraint firstItem="eRR-6e-MaC" firstAttribute="leading" secondItem="Uzb-9C-Mbg" secondAttribute="trailing" constant="12" symbolic="YES" id="PwH-Y2-N7i"/>
+                    <constraint firstItem="Xp0-db-ct7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="RWD-7Y-slb"/>
+                    <constraint firstItem="eRR-6e-MaC" firstAttribute="top" secondItem="h4Q-K6-bnf" secondAttribute="bottom" constant="20" symbolic="YES" id="VUN-mJ-BHA"/>
+                    <constraint firstItem="h4Q-K6-bnf" firstAttribute="leading" secondItem="iZ1-0w-gxY" secondAttribute="leading" id="YUQ-AN-Oyl"/>
+                    <constraint firstItem="eRR-6e-MaC" firstAttribute="firstBaseline" secondItem="Uzb-9C-Mbg" secondAttribute="firstBaseline" id="avA-L1-Wnj"/>
+                    <constraint firstItem="Xp0-db-ct7" firstAttribute="leading" secondItem="iZ1-0w-gxY" secondAttribute="trailing" constant="8" symbolic="YES" id="b0a-Kf-mH2"/>
+                    <constraint firstItem="Xp0-db-ct7" firstAttribute="trailing" secondItem="h4Q-K6-bnf" secondAttribute="trailing" id="cKI-Lh-Hg5"/>
+                    <constraint firstItem="BPa-Qd-7Ba" firstAttribute="leading" secondItem="iZ1-0w-gxY" secondAttribute="leading" id="dYm-GE-Zga"/>
+                    <constraint firstAttribute="trailing" secondItem="Xp0-db-ct7" secondAttribute="trailing" constant="20" symbolic="YES" id="dlr-mG-VCm"/>
+                    <constraint firstItem="kWA-RW-evR" firstAttribute="firstBaseline" secondItem="BPa-Qd-7Ba" secondAttribute="firstBaseline" id="jJ4-lg-PZ0"/>
+                    <constraint firstItem="kWA-RW-evR" firstAttribute="leading" secondItem="BPa-Qd-7Ba" secondAttribute="trailing" constant="8" symbolic="YES" id="tiN-34-LmB"/>
+                    <constraint firstItem="BPa-Qd-7Ba" firstAttribute="top" secondItem="Xp0-db-ct7" secondAttribute="bottom" constant="8" symbolic="YES" id="xe2-5J-rwm"/>
+                    <constraint firstItem="eRR-6e-MaC" firstAttribute="trailing" secondItem="Xp0-db-ct7" secondAttribute="trailing" id="zGd-Pe-vWN"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="1cO-dN-w9b"/>
+            </connections>
+            <point key="canvasLocation" x="253.5" y="118"/>
+        </window>
+        <customObject id="FZ4-hy-ohp" customClass="ReferenceGridController" customModule="Sequencer" customModuleProvider="target"/>
+        <arrayController objectClassName="String" editable="NO" id="5Hu-kP-yQ5">
+            <classReference key="objectClass" className="String"/>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="timeGridNames" id="NiX-TM-0CF"/>
+            </connections>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="o6P-3I-vB0"/>
+    </objects>
+</document>

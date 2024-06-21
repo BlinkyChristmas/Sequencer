@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ItemInfoController" customModule="Sequencer" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="6Gs-SL-F4T"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="BorderedView" customModule="Sequencer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="603" height="20"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qp4-le-9at">
+                    <rect key="frame" x="4" y="4" width="13" height="13"/>
+                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ssD-Ip-Rfd">
+                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="isExpanded" id="urw-B2-Lbv"/>
+                    </connections>
+                </button>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jpi-vB-wzA">
+                    <rect key="frame" x="18" y="2" width="567" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingHead" title="Label" id="4BX-xx-A4y">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="sequenceItem.name" id="EAj-St-mxx"/>
+                        <binding destination="-2" name="textColor" keyPath="settingsData.infoFontColor" id="ut2-YL-geX"/>
+                        <binding destination="-2" name="fontSize" keyPath="settingsData.infoFontSize" id="x7p-dG-TiL"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Jpi-vB-wzA" firstAttribute="centerY" secondItem="Qp4-le-9at" secondAttribute="centerY" id="edB-OS-JID"/>
+                <constraint firstItem="Qp4-le-9at" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="i7B-T3-DSZ"/>
+                <constraint firstItem="Jpi-vB-wzA" firstAttribute="leading" secondItem="Qp4-le-9at" secondAttribute="trailing" constant="3" id="ppG-9e-T1k"/>
+                <constraint firstAttribute="trailing" secondItem="Jpi-vB-wzA" secondAttribute="trailing" constant="20" symbolic="YES" id="ydy-rw-usB"/>
+                <constraint firstItem="Jpi-vB-wzA" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="yr7-e5-YHh"/>
+            </constraints>
+            <point key="canvasLocation" x="201.5" y="38.5"/>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="Brr-68-QxT"/>
+    </objects>
+</document>

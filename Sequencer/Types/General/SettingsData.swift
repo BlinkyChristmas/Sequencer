@@ -4,6 +4,14 @@ import Foundation
 import AppKit
 
 class SettingsData : NSObject {
+    static override func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
+        var results = super.keyPathsForValuesAffectingValue(forKey:  key)
+        if key == "completeBundle" {
+            results.insert("bundleFile")
+            results.insert("homeDirectory")
+        }
+        return results
+    }
     enum TrackingKeys: String, CaseIterable {
         case musicDirectory,homeDirectory
         case selectionColor,backgroundColor,borderColor,timeNowColor,infoFontColor,detailFontColor
@@ -112,8 +120,20 @@ class SettingsData : NSObject {
         }
     }
     
-    @objc dynamic var bundleFile:String?
-    @objc dynamic var gridDefault:String?
+    @objc dynamic var bundleFile:String? {
+        didSet{
+            guard isTracking else  { return }
+            changes.insert(.bundleFile)
+        }
+
+    }
+    @objc dynamic var gridDefault:String? {
+        didSet {
+            guard isTracking else  { return }
+            changes.insert(.gridDefault)
+
+        }
+    }
     
     func reset() {
         changes.removeAll()
@@ -204,9 +224,9 @@ class SettingsData : NSObject {
                     rowSize = value
                 }
             case .startingLayerCount:
-                let value = groupDefaults.double(forKey: key.rawValue)
-                if value != 0.0 {
-                    rowSize = value
+                let value = groupDefaults.integer(forKey: key.rawValue)
+                if value != 0 {
+                    startingLayerCount = value
                 }
             case .framePeriod:
                 let value = groupDefaults.integer(forKey: key.rawValue)
@@ -353,6 +373,10 @@ class SettingsData : NSObject {
         return data
     }
     
+    var completeBundle:URL? {
+        guard self.bundleFile != nil else { return nil }
+        return bundleDirectory?.appending(component: self.bundleFile!)
+    }
     override func awakeFromNib() {
         do {
             let keys = Set<TrackingKeys>(TrackingKeys.allCases)
@@ -395,5 +419,20 @@ extension SettingsData {
     
     @objc dynamic var imageDirectory:URL? {
         homeDirectory?.appending(path: BlinkyGlobals.imageSubpath)
+    }
+    
+    @objc dynamic var musicFiles:[String] {
+        var contents = [String]()
+        guard self.musicDirectory != nil else { return contents}
+        let possible = try? FileManager.default.contentsOfDirectory(at: self.musicDirectory!, includingPropertiesForKeys: [.isRegularFileKey,.isHiddenKey,.isReadableKey])
+        guard possible != nil else { return contents }
+        for entry in possible! {
+            if entry.isReqularFile && !entry.isHidden && entry.isReadable {
+                if entry.pathExtension.lowercased() == "wav" {
+                    contents.append(entry.deletingPathExtension().lastPathComponent)
+                }
+            }
+        }
+        return contents
     }
 }

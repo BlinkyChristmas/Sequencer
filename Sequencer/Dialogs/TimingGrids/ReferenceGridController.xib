@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ReferenceGridController" customModule="Sequencer" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="wKe-V5-EMr"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="494" height="117"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+            <subviews>
+                <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6VQ-gf-ogl">
+                    <rect key="frame" x="118" y="75" width="359" height="23"/>
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="X8V-7i-eVc">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <objectValues>
+                            <string>Item 1</string>
+                            <string>Item 2</string>
+                            <string>Item 3</string>
+                        </objectValues>
+                    </comboBoxCell>
+                    <connections>
+                        <binding destination="hIq-Mo-dkL" name="content" keyPath="arrangedObjects" id="JeD-37-eQ7"/>
+                        <binding destination="-2" name="value" keyPath="selectedTimeGridName" previousBinding="JeD-37-eQ7" id="QFN-dd-SdY"/>
+                    </connections>
+                </comboBox>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-wF-qKq">
+                    <rect key="frame" x="18" y="79" width="95" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Reference Grid" id="v6H-Xg-S4A">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-Fc-r9S">
+                    <rect key="frame" x="18" y="51" width="67" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Start Time" id="flo-Je-n7e">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6O-R3-b6W">
+                    <rect key="frame" x="217" y="51" width="61" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="End Time" id="Acx-92-Ecu">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iEA-9T-6wS">
+                    <rect key="frame" x="18" y="20" width="118" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Modificaton Factor" id="JEc-vn-jei">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uEb-Wn-NSI">
+                    <rect key="frame" x="217" y="19" width="72" height="18"/>
+                    <buttonCell key="cell" type="radio" title="Reduce" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="HZn-11-2h3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="setFactorDirection:" target="-2" id="ny8-75-373"/>
+                    </connections>
+                </button>
+                <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Br8-r9-hLe">
+                    <rect key="frame" x="295" y="19" width="78" height="18"/>
+                    <buttonCell key="cell" type="radio" title="Increase" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="SJp-ec-zNb">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="setFactorDirection:" target="-2" id="UGr-wO-JWj"/>
+                    </connections>
+                </button>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vui-3R-JuU">
+                    <rect key="frame" x="142" y="17" width="53" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="VgZ-ZM-2Hc"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NDj-in-EGO">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="yvR-XY-UBu"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="modificationFactor" id="6bc-qj-8Yb"/>
+                    </connections>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jiZ-DK-cRP">
+                    <rect key="frame" x="119" y="48" width="92" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="92" id="Pre-Bf-k0b"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GnH-7c-VWK">
+                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" usesGroupingSeparator="NO" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="3" maximumFractionDigits="3" id="Zoa-Ik-uQO"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="maxValue" keyPath="selectedTimeGrid.lastTime" id="8MT-mX-PWM"/>
+                        <binding destination="-2" name="minValue" keyPath="selectedTimeGrid.firstTime" previousBinding="8MT-mX-PWM" id="Qap-ht-Zyt"/>
+                        <binding destination="-2" name="value" keyPath="startTime" previousBinding="Qap-ht-Zyt" id="MLH-1s-1y0"/>
+                    </connections>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-8Z-Nxo">
+                    <rect key="frame" x="284" y="48" width="92" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="92" id="4fT-DZ-cPj"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="D8q-se-gXr">
+                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" usesGroupingSeparator="NO" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="3" maximumFractionDigits="3" id="q2b-zp-xlk"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="maxValue" keyPath="selectedTimeGrid.lastTime" id="L8I-VS-dj0"/>
+                        <binding destination="-2" name="minValue" keyPath="selectedTimeGrid.firstTime" previousBinding="L8I-VS-dj0" id="RA0-W6-Tq6"/>
+                        <binding destination="-2" name="value" keyPath="endTime" previousBinding="RA0-W6-Tq6" id="pXW-sW-xkC"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="6VQ-gf-ogl" secondAttribute="trailing" constant="20" symbolic="YES" id="2Pb-34-MVh"/>
+                <constraint firstItem="GdM-Fc-r9S" firstAttribute="leading" secondItem="UQS-wF-qKq" secondAttribute="leading" id="6L0-1O-F2o"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Br8-r9-hLe" secondAttribute="bottom" constant="20" symbolic="YES" id="7lt-Mz-XpA"/>
+                <constraint firstItem="jiZ-DK-cRP" firstAttribute="leading" secondItem="6VQ-gf-ogl" secondAttribute="leading" id="9rm-qV-241"/>
+                <constraint firstItem="jiZ-DK-cRP" firstAttribute="firstBaseline" secondItem="GdM-Fc-r9S" secondAttribute="firstBaseline" id="BKz-4c-L9W"/>
+                <constraint firstItem="Vui-3R-JuU" firstAttribute="firstBaseline" secondItem="iEA-9T-6wS" secondAttribute="firstBaseline" id="CSs-xC-F3I"/>
+                <constraint firstItem="Vui-3R-JuU" firstAttribute="leading" secondItem="iEA-9T-6wS" secondAttribute="trailing" constant="8" symbolic="YES" id="Hho-5p-DEr"/>
+                <constraint firstItem="Vui-3R-JuU" firstAttribute="top" secondItem="jiZ-DK-cRP" secondAttribute="bottom" constant="10" symbolic="YES" id="KZJ-cc-nmx"/>
+                <constraint firstItem="cEq-8Z-Nxo" firstAttribute="firstBaseline" secondItem="GdM-Fc-r9S" secondAttribute="firstBaseline" id="Koo-pN-5Va"/>
+                <constraint firstItem="6VQ-gf-ogl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="L70-rm-AXg"/>
+                <constraint firstItem="UQS-wF-qKq" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="QDJ-Ib-lm4"/>
+                <constraint firstItem="6VQ-gf-ogl" firstAttribute="leading" secondItem="UQS-wF-qKq" secondAttribute="trailing" constant="8" symbolic="YES" id="Umh-MS-pks"/>
+                <constraint firstItem="iEA-9T-6wS" firstAttribute="leading" secondItem="GdM-Fc-r9S" secondAttribute="leading" id="bCt-t9-DF7"/>
+                <constraint firstItem="b6O-R3-b6W" firstAttribute="leading" secondItem="jiZ-DK-cRP" secondAttribute="trailing" constant="8" symbolic="YES" id="eD7-84-4BG"/>
+                <constraint firstItem="Br8-r9-hLe" firstAttribute="firstBaseline" secondItem="iEA-9T-6wS" secondAttribute="firstBaseline" id="jg0-8J-smF"/>
+                <constraint firstItem="cEq-8Z-Nxo" firstAttribute="leading" secondItem="b6O-R3-b6W" secondAttribute="trailing" constant="8" symbolic="YES" id="luQ-et-ikx"/>
+                <constraint firstItem="Br8-r9-hLe" firstAttribute="leading" secondItem="uEb-Wn-NSI" secondAttribute="trailing" constant="8" symbolic="YES" id="mXJ-RO-5AE"/>
+                <constraint firstItem="uEb-Wn-NSI" firstAttribute="leading" secondItem="Vui-3R-JuU" secondAttribute="trailing" constant="24" id="mvc-31-nBz"/>
+                <constraint firstItem="6VQ-gf-ogl" firstAttribute="firstBaseline" secondItem="UQS-wF-qKq" secondAttribute="firstBaseline" id="nsg-0h-qbY"/>
+                <constraint firstItem="b6O-R3-b6W" firstAttribute="firstBaseline" secondItem="GdM-Fc-r9S" secondAttribute="firstBaseline" id="pDJ-By-qK5"/>
+                <constraint firstItem="jiZ-DK-cRP" firstAttribute="top" secondItem="6VQ-gf-ogl" secondAttribute="bottom" constant="8" symbolic="YES" id="rAG-eg-igl"/>
+                <constraint firstItem="uEb-Wn-NSI" firstAttribute="firstBaseline" secondItem="iEA-9T-6wS" secondAttribute="firstBaseline" id="vJU-DZ-hWE"/>
+            </constraints>
+            <point key="canvasLocation" x="-18" y="21.5"/>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="Zt4-dS-3di"/>
+        <arrayController objectClassName="String" id="hIq-Mo-dkL">
+            <classReference key="objectClass" className="String"/>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="gridNames" id="96G-96-4tZ"/>
+            </connections>
+        </arrayController>
+    </objects>
+</document>

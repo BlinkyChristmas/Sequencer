@@ -95,7 +95,7 @@ extension SeqItem {
         if node?.stringValue != nil {
             visualOrigin = try NSPoint.pointFor(string: node!.stringValue!)
         }
-        node = element.attribute(forName: "scale")
+        node = element.attribute(forName: "visualScale")
         if node?.stringValue != nil  {
             guard let value = Double(node!.stringValue!) else {
                 throw GeneralError(errorMessage: "SequenceItem element has invalid scale value: \(node!.stringValue!)")

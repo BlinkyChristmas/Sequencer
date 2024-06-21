@@ -12,6 +12,14 @@ struct LightFile {
     var musicName = ""
     var framePeriod = 0.037
     var lightData = [ [UInt8]]()
+    init(frameCount: Int = 0, frameLength: Int = 0,  musicName: String = "", framePeriod: Double = 0.037, lightData: [[UInt8]] = [ [UInt8]]()) {
+        self.frameCount = frameCount
+        self.frameLength = frameLength
+        self.dataOffset = 54
+        self.musicName = musicName
+        self.framePeriod = framePeriod
+        self.lightData = lightData
+    }
 }
 
 extension LightFile {
@@ -57,7 +65,7 @@ extension LightFile {
         guard let temp = musicName.data(using: .ascii) else {
             throw NSError(domain: "Sequencer", code: 0, userInfo: [NSLocalizedDescriptionKey:"Unable to convert musicName '\(musicName)' to data"])
         }
-        let size = temp.count > 30 ? 30 : data.count
+        let size = temp.count > 30 ? 30 : temp.count
         data[24..<24+size] = temp[0..<size]
         for (index,framedata) in lightData.enumerated() {
             data[54+index*frameLength..<54+(index+1)*frameLength] = Data(framedata)

@@ -12,6 +12,13 @@ class TimeGrid : NSObject,Codable {
     @objc dynamic var name:String?
     @objc dynamic var color = NSColor.red
     
+    @objc dynamic var lastTime:Double {
+        timeEntries.max()?.milliSeconds ?? 0.0
+    }
+    @objc dynamic var firstTime:Double {
+        timeEntries.min()?.milliSeconds ?? 0.0
+    }
+
     var timeEntries = Set<Int>() 
     var isScratch:Bool {
         return self.name == "Scratch"
@@ -41,6 +48,9 @@ class TimeGrid : NSObject,Codable {
         try container.encode(timeEntries, forKey: .timeEntries)
     }
     
+    override var description: String {
+        return self.name ?? "none"
+    }
 }
 
 // ============  NSCopying
@@ -164,5 +174,18 @@ extension TimeGrid {
         // They are the same distance, so look at preference
         return preferBefore ? beforeTime : afterTime
 
+    }
+    
+    func timesBetweenInclusive(startTime:Int, endTime:Int) -> [Int] {
+        var rvalue = [Int]()
+        for time in timeEntries.sorted() {
+            if time >= startTime && time <= endTime {
+                rvalue.append(time)
+            }
+            if time > endTime {
+                break
+            }
+        }
+        return rvalue 
     }
 }

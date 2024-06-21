@@ -173,7 +173,7 @@ class MusicPlayer : NSObject {
                 }
             }
             else {
-                Swift.print("Error loading assest: \(item.error?.localizedDescription ?? "unknown")")
+                //Swift.print("Error loading assest: \(item.error?.localizedDescription ?? "unknown")")
             }
         }
         player.replaceCurrentItem(with: item)

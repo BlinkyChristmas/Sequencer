@@ -9,6 +9,9 @@ class ItemEffect : NSObject,Codable {
     @objc dynamic var startTime = 0
     @objc dynamic var endTime = 0
     @objc dynamic var effectLayer = 0
+    @objc dynamic var width:Int {
+        return endTime - startTime
+    }
     init(gridName: String? = nil, pattern: String? = nil, startTime: Int = 0, endTime: Int = 0, effectLayer: Int = 0) {
         self.gridName = gridName
         self.pattern = pattern
@@ -17,7 +20,7 @@ class ItemEffect : NSObject,Codable {
         self.effectLayer = effectLayer
     }
     override var description: String {
-        String(format: "Pattern: %@, Grid: %@, Span: %.3f-%.3f, Layer: %u",pattern ?? "", gridName ?? "", startTime.milliString,endTime.milliString,effectLayer)
+        String(format: "Pattern: %@, Grid: %@, Span: %.3f-%.3f, Layer: %u",pattern ?? "", gridName ?? "", startTime.milliSeconds,endTime.milliSeconds,effectLayer)
     }
 }
 // =========== NSCopying
@@ -59,6 +62,7 @@ extension ItemEffect {
         return element
     }
     convenience init(element:XMLElement) throws {
+        self.init()
         guard element.name == "effect" else {
             throw GeneralError(errorMessage: "Invalid element name for ItemEffect: \(element.name ?? "")")
         }
@@ -67,7 +71,7 @@ extension ItemEffect {
         if node?.stringValue == nil {
             throw GeneralError(errorMessage: "Effect element missing pattern attribute value")
         }
-        let pattern = node!.stringValue!
+        self.pattern = node!.stringValue!
         
         node = element.attribute(forName: "layer")
         if node?.stringValue == nil {
@@ -76,6 +80,7 @@ extension ItemEffect {
         guard let layer = Int(node!.stringValue!) else {
             throw GeneralError(errorMessage: "Effect element had invalid layer attribute value: \(node!.stringValue!)")
         }
+        self.effectLayer = layer
         
         node = element.attribute(forName: "gridName")
         if node?.stringValue == nil {
@@ -85,24 +90,25 @@ extension ItemEffect {
         if node?.stringValue == nil {
             throw GeneralError(errorMessage: "Effect element missing gridName attribute value")
         }
-        let gridName = node!.stringValue!
+        self.gridName = node!.stringValue!
 
         node = element.attribute(forName: "startTime")
         if node?.stringValue == nil {
             throw GeneralError(errorMessage: "Effect element missing startTime attribute value")
         }
-        guard let startTime = Double(node!.stringValue!) else {
+        guard let tstartTime = Double(node!.stringValue!) else {
             throw GeneralError(errorMessage: "Effect element had invalid startTime attribute value: \(node!.stringValue!)")
         }
+        self.startTime = tstartTime.milliSeconds
         
         node = element.attribute(forName: "endTime")
         if node?.stringValue == nil {
             throw GeneralError(errorMessage: "Effect element missing endTime attribute value")
         }
-        guard let endTime = Double(node!.stringValue!) else {
+        guard let tendTime = Double(node!.stringValue!) else {
             throw GeneralError(errorMessage: "Effect element had invalid endTime attribute value: \(node!.stringValue!)")
         }
-
-        self.init(gridName: gridName, pattern: pattern, startTime: startTime.milliSeconds, endTime: endTime.milliSeconds, effectLayer: layer)
+        self.endTime = tendTime.milliSeconds
+        //Swift.print(" startTime: \(self.startTime)  endTime: \(self.endTime)")
     }
 }

@@ -133,19 +133,19 @@ struct Keycode {
 
 extension UTType {
     static var sequence:UTType {
-        UTType(filenameExtension: "sequence", conformingTo: .xml)!
+        UTType(filenameExtension: "sequence",conformingTo: .xml)!
     }
     static var blinky:UTType {
-        UTType(filenameExtension: "blinkybundle", conformingTo: .xml)!
+        UTType(filenameExtension: "blinkybundle")!
     }
     static var light:UTType {
-        UTType(filenameExtension: "light", conformingTo: .xml)!
+        UTType(filenameExtension: "light")!
     }
     static var visualization:UTType {
-        UTType(filenameExtension: "visualization", conformingTo: .xml)!
+        UTType(filenameExtension: "visualization")!
     }
     static var shuffle:UTType {
-        UTType(filenameExtension: "shuffle", conformingTo: .xml)!
+        UTType(filenameExtension: "shuffle")!
     }
     static var diybseq:UTType {
         UTType(filenameExtension: "diybseq")!
@@ -161,7 +161,7 @@ extension NSPasteboard.PasteboardType {
 struct BlinkyGlobals {
     static let framePeriod = 37
     
-    static let effectMargin = 3.0
+    static let effectMargin = 4.0
     static let itemMargin = 2.0
     static let rowSize = 18.0
 
@@ -197,3 +197,4 @@ struct BlinkyGlobals {
     // Sequence type
     static let sequenceIdentifier = "com.blinky.sequence"
 }
+

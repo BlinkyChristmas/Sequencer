@@ -33,4 +33,8 @@ class BackgroundView  : NSView {
             self.layer?.backgroundColor = settings.backgroundColor.cgColor
         })
     }
+    
+    override var isFlipped: Bool {
+        return true 
+    }
 }

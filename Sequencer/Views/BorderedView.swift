@@ -8,7 +8,16 @@ class BorderedView  : BackgroundView {
     deinit {
         borderObserver?.invalidate()
     }
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.autoresizingMask = .width
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.autoresizingMask = .width
+   }
+
     override func viewWillMove(toWindow newWindow: NSWindow?) {
         super.viewWillMove(toWindow: newWindow)
         borderObserver?.invalidate()
@@ -23,4 +32,22 @@ class BorderedView  : BackgroundView {
             self.layer?.borderColor = settings.borderColor.cgColor
         })
     }
+    
+    override var isFlipped: Bool {
+        return true
+    }
+    
+    @IBOutlet var itemController:ItemController?
+    
+    override func menu(for event: NSEvent) -> NSMenu? {
+        
+        guard itemController != nil else { return super.menu(for: event) }
+        return itemController!.menu(for: event)
+    }
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+        guard itemController != nil else { return acceptsFirstMouse(for: event)}
+        return true
+    }
+
 }

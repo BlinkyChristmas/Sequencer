@@ -51,6 +51,7 @@ class SettingsDialog : NSWindowController {
     }
     
     @IBAction func endDialog(_ sender: Any?) {
+        self.window?.makeFirstResponder((sender as! NSControl))
         let response = ((sender as? NSControl)?.tag ?? 0 ) == 0 ? NSApplication.ModalResponse.cancel : NSApplication.ModalResponse.OK
         defer {
             self.close()

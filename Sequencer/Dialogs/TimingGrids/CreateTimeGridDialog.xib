@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CreateTimeGridDialog" customModule="Sequencer" customModuleProvider="target">
+            <connections>
+                <outlet property="groupBox" destination="MEc-FS-iux" id="4dc-wp-YFO"/>
+                <outlet property="referenceGridController" destination="90M-r3-TaR" id="UzM-mr-3d6"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="7Xw-tj-r5K"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="660" height="287"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="5120" height="1415"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="660" height="287"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-bf-Ufu">
+                        <rect key="frame" x="18" y="248" width="69" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Grid Name" id="gbe-q0-4gj">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3fU-2b-neM">
+                        <rect key="frame" x="93" y="245" width="501" height="21"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="TO8-8i-WEZ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="gridName" id="kti-2D-KQC"/>
+                        </connections>
+                    </textField>
+                    <colorWell wellStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="YyM-TF-UUS">
+                        <rect key="frame" x="599" y="241" width="44" height="28"/>
+                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="gridColor" id="fro-qp-Q4k"/>
+                        </connections>
+                    </colorWell>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ap1-TE-XRG">
+                        <rect key="frame" x="18" y="220" width="115" height="18"/>
+                        <buttonCell key="cell" type="check" title="Use Reference" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xJH-4D-Zux">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="referenceEnable" id="OHw-jW-F1T"/>
+                        </connections>
+                    </button>
+                    <box title="Reference" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-FS-iux">
+                        <rect key="frame" x="17" y="56" width="626" height="157"/>
+                        <view key="contentView" id="eRd-bt-Dwn">
+                            <rect key="frame" x="4" y="5" width="618" height="137"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                    </box>
+                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="asG-8d-ZVI">
+                        <rect key="frame" x="543" y="13" width="104" height="32"/>
+                        <buttonCell key="cell" type="push" title="Create Grid" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F73-Oo-ZFH">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="rQY-Oa-Qsd"/>
+                            <binding destination="-2" name="enabled" keyPath="gridName" id="8Ei-hb-LJ8">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tlb-n0-0Vp">
+                        <rect key="frame" x="469" y="13" width="76" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KMz-S4-sja">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="endDialog:" target="-2" id="gdb-8h-pOo"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MEc-FS-iux" firstAttribute="leading" secondItem="fAS-bf-Ufu" secondAttribute="leading" id="2rA-Bn-kP5"/>
+                    <constraint firstItem="YyM-TF-UUS" firstAttribute="firstBaseline" secondItem="fAS-bf-Ufu" secondAttribute="firstBaseline" id="5ol-ut-ZjU"/>
+                    <constraint firstItem="asG-8d-ZVI" firstAttribute="leading" secondItem="Tlb-n0-0Vp" secondAttribute="trailing" constant="12" symbolic="YES" id="9RM-J8-8md"/>
+                    <constraint firstItem="YyM-TF-UUS" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="F03-tc-yWE"/>
+                    <constraint firstAttribute="trailing" secondItem="YyM-TF-UUS" secondAttribute="trailing" constant="20" symbolic="YES" id="FpF-qW-902"/>
+                    <constraint firstItem="YyM-TF-UUS" firstAttribute="leading" secondItem="3fU-2b-neM" secondAttribute="trailing" constant="8" symbolic="YES" id="Hs0-Ip-VAC"/>
+                    <constraint firstAttribute="bottom" secondItem="asG-8d-ZVI" secondAttribute="bottom" constant="20" symbolic="YES" id="Jlg-wM-Y5m"/>
+                    <constraint firstItem="fAS-bf-Ufu" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="Luk-dD-y84"/>
+                    <constraint firstItem="3fU-2b-neM" firstAttribute="firstBaseline" secondItem="fAS-bf-Ufu" secondAttribute="firstBaseline" id="QgS-j3-Mn4"/>
+                    <constraint firstItem="ap1-TE-XRG" firstAttribute="top" secondItem="3fU-2b-neM" secondAttribute="bottom" constant="8" symbolic="YES" id="TPY-CP-9vR"/>
+                    <constraint firstItem="YyM-TF-UUS" firstAttribute="trailing" secondItem="MEc-FS-iux" secondAttribute="trailing" id="V73-nM-INJ"/>
+                    <constraint firstItem="ap1-TE-XRG" firstAttribute="leading" secondItem="fAS-bf-Ufu" secondAttribute="leading" id="WDw-cW-xfR"/>
+                    <constraint firstItem="asG-8d-ZVI" firstAttribute="top" secondItem="MEc-FS-iux" secondAttribute="bottom" constant="20" symbolic="YES" id="aET-Py-hzq"/>
+                    <constraint firstItem="asG-8d-ZVI" firstAttribute="firstBaseline" secondItem="Tlb-n0-0Vp" secondAttribute="firstBaseline" id="bP2-hG-FlS"/>
+                    <constraint firstItem="3fU-2b-neM" firstAttribute="leading" secondItem="fAS-bf-Ufu" secondAttribute="trailing" constant="8" symbolic="YES" id="czL-v7-l8f"/>
+                    <constraint firstItem="MEc-FS-iux" firstAttribute="top" secondItem="ap1-TE-XRG" secondAttribute="bottom" constant="8" symbolic="YES" id="ic3-AK-iGw"/>
+                    <constraint firstItem="asG-8d-ZVI" firstAttribute="trailing" secondItem="MEc-FS-iux" secondAttribute="trailing" id="mQ2-TR-bq7"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="07P-mM-WuK"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="94.5"/>
+        </window>
+        <customObject id="90M-r3-TaR" customClass="ReferenceGridController" customModule="Sequencer" customModuleProvider="target"/>
+        <userDefaultsController representsSharedInstance="YES" id="RPW-9c-s1j"/>
+    </objects>
+</document>

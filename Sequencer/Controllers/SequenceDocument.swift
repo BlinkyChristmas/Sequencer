@@ -17,7 +17,7 @@ class SequenceDocument: NSDocument {
     }
 
     override class var autosavesInPlace: Bool {
-        return true
+        return false
     }
 
 
@@ -54,7 +54,11 @@ class SequenceDocument: NSDocument {
         for entry in timeGrids {
             root.addChild(entry.xml)
         }
-        return XMLDocument(rootElement: root).xmlData(options: .nodePrettyPrint)
+        let xmldoc = XMLDocument(rootElement: root)
+        xmldoc.version = "1.0"
+        xmldoc.characterEncoding = "UTF-8"
+
+        return xmldoc.xmlData(options: .nodePrettyPrint)
 
     }
 
@@ -63,6 +67,8 @@ class SequenceDocument: NSDocument {
             throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         }
         let xmldoc = try XMLDocument(data: data)
+        xmldoc.version = "1.0"
+        xmldoc.characterEncoding = "UTF-8"
         guard xmldoc.rootElement()?.name == "sequence" else {
             throw GeneralError(errorMessage: "Sequence is missing the proper root element 'sequence'")
         }
@@ -91,7 +97,7 @@ class SequenceDocument: NSDocument {
             throw GeneralError(errorMessage: "Sequence is missing musicName attribute value")
         }
         musicName = URL(filePath: node!.stringValue!).deletingPathExtension().lastPathComponent
-        node = xmldoc.rootElement()?.attribute(forName: "scale")
+        node = xmldoc.rootElement()?.attribute(forName: "visualScale")
         if node?.stringValue != nil {
             guard let temp = Double(node!.stringValue!) else {
                 throw GeneralError(errorMessage: "Invalid value for scale attribute in sequence document: \(node!.stringValue!)")
