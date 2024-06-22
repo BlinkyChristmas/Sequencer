@@ -457,6 +457,7 @@ extension ItemController {
         if NSPointInRect(ourPoint, self.view.bounds) {
             updateStatus(point: ourPoint)
             if selection?.isSelected ?? false {
+                self.view.autoscroll(with: event)
                 switch currentDrag {
                 case .extendLeft:
                     let delta = dragPoint.x - ourPoint.x

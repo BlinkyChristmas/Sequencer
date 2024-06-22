@@ -208,6 +208,7 @@ extension TimeGridController {
         guard self.isActive && self.isEnabled else { self.nextResponder?.mouseDragged(with: event); return }
         let point = self.view.convert(event.locationInWindow, from: nil)
         let time = (point.x / dotsPerSecond).milliSeconds
+        self.view.autoscroll(with: event)
         (self.view.window!.windowController as! SequenceController).displayMouseTime(time: time.milliSeconds)
         if selectedTime != nil {
             selectedTime = time - deltaTime!
