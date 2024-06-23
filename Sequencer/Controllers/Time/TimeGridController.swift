@@ -97,7 +97,7 @@ class TimeGridController : NSViewController {
                 path.line(to: NSPoint(x: time.milliSeconds * dotsPerSecond, y: height))
             }
         }
-        path.lineWidth = 1.0
+        path.lineWidth = 2.0
         
         path.setLineDash(&dashes, count: 2, phase: CGFloat(gridNumber) * 4.0)
         path.close()
