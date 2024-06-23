@@ -159,11 +159,15 @@ extension TimeGridController {
     
     override func mouseDown(with event: NSEvent) {
         guard self.isActive && self.isEnabled && timeGrid != nil else { self.nextResponder?.mouseDown(with: event); return }
+        
         if self.view.window!.makeFirstResponder(self) {
             let point = self.view.convert(event.locationInWindow, from: nil)
             // See if we have a modifier
             if event.modifierFlags.contains(.command) {
                 // we are adding a time
+                // Deselect Grid
+                
+                
                 let time = (point.x / dotsPerSecond).milliSeconds
                 (self.view.window!.windowController as! SequenceController).displayMouseTime(time: time.milliSeconds)
                 if !timeGrid!.timeEntries.contains(time) {
@@ -219,9 +223,9 @@ extension TimeGridController {
     override func mouseUp(with event: NSEvent) {
         guard self.isActive && self.isEnabled else { self.nextResponder?.mouseUp(with: event); return }
         let point = self.view.convert(event.locationInWindow, from: nil)
-        let time = (point.x / dotsPerSecond).milliSeconds
+        //let time = (point.x / dotsPerSecond).milliSeconds
         let seq = (self.view.window!.windowController as! SequenceController).document as! SequenceDocument
-        if selectedTime != nil {
+        if selectedTime != nil  {
             // we need to modify the time
             let actualTime = selectedTime! - deltaTime!
             let shadow = self.shadowTime!
@@ -249,14 +253,16 @@ extension TimeGridController {
                     
                     self.refresh()
                 })
-                shadowTime = time
-                selectedTime = time
+                self.shadowTime = nil
+                self.selectedTime = nil
                 self.refresh()
             }
             
-            selectedTime = actualTime
+            selectedTime = nil
+            
 
         }
+       
 
     }
     override func keyDown(with event: NSEvent) {

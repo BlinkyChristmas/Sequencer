@@ -197,7 +197,7 @@ extension SequenceController {
 extension SequenceController {
     @IBAction func createTimeGrid( _ sender: Any?) {
         createGridDialog.timeGrids = sequence.timeGrids
-        
+        createGridDialog.gridName = nil 
         self.window!.beginSheet(createGridDialog.window!) { response in
             guard response == .OK else { return }
             var entries = Set<Int>()
