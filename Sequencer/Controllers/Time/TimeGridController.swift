@@ -263,7 +263,7 @@ extension TimeGridController {
         guard self.isActive && self.isEnabled  else { self.nextResponder?.keyDown(with: event); return }
         let seq = (self.view.window!.windowController as! SequenceController).document as! SequenceDocument
         
-        if event.keyCode == Keycode.delete && selectedTime != nil {
+        if (event.keyCode == Keycode.delete || event.keyCode == Keycode.forwardDelete) && selectedTime != nil {
             //Swift.print("Removing entry: \(shadowTime!)")
             timeGrid?.timeEntries.remove(shadowTime!)
             timeGrid?.timeEntries.remove(selectedTime!)
