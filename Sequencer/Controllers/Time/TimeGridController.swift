@@ -222,7 +222,7 @@ extension TimeGridController {
     }
     override func mouseUp(with event: NSEvent) {
         guard self.isActive && self.isEnabled else { self.nextResponder?.mouseUp(with: event); return }
-        let point = self.view.convert(event.locationInWindow, from: nil)
+        //let point = self.view.convert(event.locationInWindow, from: nil)
         //let time = (point.x / dotsPerSecond).milliSeconds
         let seq = (self.view.window!.windowController as! SequenceController).document as! SequenceDocument
         if selectedTime != nil  {

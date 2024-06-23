@@ -368,7 +368,7 @@ extension ItemController {
                 pasteEffect()
             }
         }
-        else if event.keyCode == Keycode.delete {
+        else if event.keyCode == Keycode.delete || event.keyCode == Keycode.forwardDelete {
             if (selection?.isSelected ?? false )  == true {
                 let item = NSMenuItem()
                 item.representedObject = selection
