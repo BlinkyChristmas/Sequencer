@@ -561,6 +561,60 @@ extension ItemController {
 
     }
     
+    @objc func createEffectWithCopy( _ sender: Any?) {
+        let menuItem  =  sender as? NSMenuItem
+        if menuItem?.representedObject == nil {
+            createEffect(sender)
+            return
+        }
+        createEffectDialog.gridNames = self.gridNames
+        createEffectDialog.patternDirectory = self.patternDirectory
+        createEffectDialog.timeGrids = self.timeGrids
+        let selectedController = (menuItem!.representedObject as? EffectController)!
+        createEffectDialog.loadEffect(effect: selectedController.effect?.copy() as? ItemEffect)
+        createEffectDialog.selectedGrid = selectedController.effect!.gridName
+        createEffectDialog.startTime = selectedController.effect!.startTime.milliSeconds
+        createEffectDialog.endTime = selectedController.effect!.endTime.milliSeconds
+        createEffectDialog.isModify = false
+        createEffectDialog.effectLayer = selectedController.effect!.effectLayer
+        let master = self.view.window!.windowController as! SequenceController
+        let seq = master.document as! SequenceDocument
+        let undo =  seq.undoManager
+        let active = self.activeGrid
+        self.view.window?.beginSheet(createEffectDialog.window!,completionHandler: { response in
+            guard response == .OK else { return }
+            let effect = ItemEffect()
+            effect.pattern = self.createEffectDialog.patternSelection
+            effect.gridName = self.createEffectDialog.selectedGrid
+            effect.effectLayer = self.createEffectDialog.effectLayer
+            effect.startTime = self.createEffectDialog.startTime.milliSeconds
+            effect.endTime = self.createEffectDialog.endTime.milliSeconds
+            
+            let controller = EffectController(nibName: nil, bundle: nil)
+            self.sequenceItem?.effects.append(effect)
+            
+            
+            controller.effect = effect
+            self.controllers.append(controller)
+            self.view.addSubview(controller.view)
+            undo!.registerUndo(withTarget: seq, handler: { seq in
+               var index = self.controllers.firstIndex(where: { $0.effect == effect})
+               if index != nil {
+                    self.controllers[index!].view.removeFromSuperview()
+                    self.controllers.remove(at: index!)
+                }
+                index = self.sequenceItem!.effects.firstIndex(of: effect)
+                if index != nil {
+                    self.sequenceItem!.effects.remove(at: index!)
+                }
+                master.shuffle()
+            })
+            // We should select the one we just copied, or just nil it
+            
+            self.selection = self.selectEffect(controller: nil)
+            master.shuffle()
+        })
+    }
     @objc func createEffect( _ sender: Any?) {
         createEffectDialog.gridNames = self.gridNames
         createEffectDialog.patternDirectory = self.patternDirectory
@@ -745,7 +799,10 @@ extension ItemController {
             }
         }
         if containsSelected {
-            var menuItem = NSMenuItem(title: "Delete", action: #selector(deleteEffect(_:)), keyEquivalent: "")
+            var menuItem = NSMenuItem(title: "Create with copy", action: #selector(createEffectWithCopy(_:)), keyEquivalent: "")
+            menuItem.representedObject = selection
+            menu.addItem(menuItem)
+            menuItem = NSMenuItem(title: "Delete", action: #selector(deleteEffect(_:)), keyEquivalent: "")
             menuItem.representedObject = selection
             menu.addItem(menuItem)
             menuItem = NSMenuItem(title: "Edit", action: #selector(modifyEffect(_:)), keyEquivalent: "")
