@@ -41,13 +41,13 @@ extension SequenceVisualController {
     override func windowDidLoad() {
         self.window?.title = "Visualizer: \(visualName ?? "" ) - \(musicName ?? "")"
     }
-     func drawView() {
+    func drawView() {
         guard let itemManager = itemManager else { return }
-         //var baseTransform = AffineTransform.identity
-         var baseTransform: AffineTransform?
-         if globalScale != 1.0 {
-             baseTransform = AffineTransform(scale: globalScale)
-         }
+        //var baseTransform = AffineTransform.identity
+        var baseTransform: AffineTransform?
+        if globalScale != 1.0 {
+            baseTransform = AffineTransform(scale: globalScale)
+        }
         for controller in itemManager.detailControllers {
             if controller.lightBundle != nil {
                 var transform:AffineTransform = .identity
@@ -61,7 +61,7 @@ extension SequenceVisualController {
                 }
                 //Swift.print(" SequenceItem: \(controller.sequenceItem!.name!) has a scale of \(controller.sequenceItem!.visualScale)")
                 
-               if baseTransform != nil {
+                if baseTransform != nil {
                     transform.append(baseTransform!)
                 }
                 

@@ -10,13 +10,13 @@ class SeqItem : NSObject,Codable {
     @objc dynamic var visualOrigin = NSPoint.zero
     @objc dynamic var visualScale = 1.0
     @objc dynamic var dataOffset = 0
+
     
     init(effects: [ItemEffect] = [ItemEffect](), name: String? = nil, bundleType: String? = nil, visualOrigin: NSPoint = NSPoint.zero, visualScale: Double = 1.0, dataOffset: Int = 0) {
         self.effects = effects
         self.name = name
         self.bundleType = bundleType
         self.visualOrigin = visualOrigin
-        self.visualScale = visualScale
         self.dataOffset = dataOffset
     }
 }
@@ -53,6 +53,7 @@ extension SeqItem {
         node.stringValue = String(self.visualScale)
         element.addAttribute( node)
         
+
         node = XMLNode(kind: .attribute)
         node.name = "dataOffset"
         node.stringValue = String(self.dataOffset)
@@ -98,7 +99,7 @@ extension SeqItem {
         node = element.attribute(forName: "visualScale")
         if node?.stringValue != nil  {
             guard let value = Double(node!.stringValue!) else {
-                throw GeneralError(errorMessage: "SequenceItem element has invalid scale value: \(node!.stringValue!)")
+                throw GeneralError(errorMessage: "SequenceItem element has invalid visiual scale value: \(node!.stringValue!)")
             }
             visualScale = value
         }

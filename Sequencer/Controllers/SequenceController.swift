@@ -352,6 +352,13 @@ extension SequenceController {
         sequenceVisualizationController.masterController = self
         sequenceVisualizationController.visualName = sequence.visualizationName
         sequenceVisualizationController.globalScale = sequence.visualScale
+        let size = sequence.visualSize
+        if size.width > 0.0 && size.height > 0.0 {
+            sequenceVisualizationController.showWindow(nil)
+            let frameRect = self.sequenceVisualizationController.window!.frame
+            let newRect = NSRect(origin: frameRect.origin, size: size)
+            self.sequenceVisualizationController.window!.setFrame(newRect, display: true)
+        }
         
         musicPlayer.loadMusic(url: (NSApp.delegate as! AppDelegate).settingsData.musicDirectory!.appending(path: (self.document as! SequenceDocument).musicName!).appendingPathExtension(for: .wav))
     }

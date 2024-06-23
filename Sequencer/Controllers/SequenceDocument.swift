@@ -8,6 +8,7 @@ class SequenceDocument: NSDocument {
     @objc dynamic var timeGrids = [TimeGrid]()
     @objc dynamic var musicName:String?
     @objc dynamic var visualScale = 1.0
+    @objc dynamic var visualSize = NSSize.zero
     @objc dynamic var visualizationName:String?
     @objc dynamic var framePeriod = 0.037
     
@@ -43,6 +44,13 @@ class SequenceDocument: NSDocument {
         node.name = "visualScale"
         node.stringValue = String(format:"%.3f",self.visualScale)
         root.addAttribute(node)
+        
+        node = XMLNode(kind: .attribute)
+        node.name = "visualSize"
+        node.stringValue = visualSize.stringValue
+        root.addAttribute(node)
+        
+
         node = XMLNode(kind: .attribute)
         node.name = "visualizationName"
         node.stringValue = self.visualizationName
@@ -97,6 +105,7 @@ class SequenceDocument: NSDocument {
             throw GeneralError(errorMessage: "Sequence is missing musicName attribute value")
         }
         musicName = URL(filePath: node!.stringValue!).deletingPathExtension().lastPathComponent
+        
         node = xmldoc.rootElement()?.attribute(forName: "visualScale")
         if node?.stringValue != nil {
             guard let temp = Double(node!.stringValue!) else {
@@ -104,6 +113,11 @@ class SequenceDocument: NSDocument {
             }
             visualScale = temp
         }
+        node = xmldoc.rootElement()?.attribute(forName: "visualSize")
+        if node?.stringValue != nil {
+            visualSize = (try? NSSize.sizeFor(string: node!.stringValue!)) ?? NSSize.zero
+        }
+
         // and lastly get the visualizationName
         node = xmldoc.rootElement()?.attribute(forName: "visualizationName")
         if node?.stringValue != nil {
