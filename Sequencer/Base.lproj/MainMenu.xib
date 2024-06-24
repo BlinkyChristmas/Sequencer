@@ -107,8 +107,8 @@
                                     <action selector="renderLightData:" target="-1" id="xea-B7-B58"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="RenderSerial" id="YLj-gv-BkC">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="RenderSerial" keyEquivalent="r" id="YLj-gv-BkC">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                 <connections>
                                     <action selector="renderInLineLightData:" target="-1" id="MIa-jS-Ne1"/>
                                 </connections>
