@@ -107,6 +107,12 @@
                                     <action selector="renderLightData:" target="-1" id="xea-B7-B58"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="RenderSerial" id="YLj-gv-BkC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="renderInLineLightData:" target="-1" id="MIa-jS-Ne1"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="yFI-Yc-gjG"/>
                             <menuItem title="Visualization" id="8Hi-fg-PeI">
                                 <modifierMask key="keyEquivalentModifierMask"/>

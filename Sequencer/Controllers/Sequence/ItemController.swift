@@ -580,7 +580,7 @@ extension ItemController {
         let master = self.view.window!.windowController as! SequenceController
         let seq = master.document as! SequenceDocument
         let undo =  seq.undoManager
-        let active = self.activeGrid
+        //let active = self.activeGrid
         self.view.window?.beginSheet(createEffectDialog.window!,completionHandler: { response in
             guard response == .OK else { return }
             let effect = ItemEffect()

@@ -530,5 +530,14 @@ extension SequenceController {
             NSAlert(error: error).beginSheetModal(for: self.window!)
         }
     }
+    @IBAction func renderInLineLightData( _ sender: Any?){
+        do {
+            try itemManager.renderLightData(background: false)
+        }
+        catch {
+            NSAlert(error: error).beginSheetModal(for: self.window!)
+        }
+
+    }
 }
 
