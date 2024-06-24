@@ -373,6 +373,8 @@ extension ItemController {
                 let item = NSMenuItem()
                 item.representedObject = selection
                 self.deleteEffect(item)
+                currentDrag = .none
+                currentCursor = nil 
             }
         }
 
@@ -454,6 +456,7 @@ extension ItemController {
         let ourPoint = convert(event: event)
         let allowLayer = event.modifierFlags.contains(.command)
         let delty = allowLayer == true && isExpanded == true ? ourPoint.y - dragPoint.y:  0.0
+        guard selection != nil else { currentDrag = .none; currentCursor = nil; return }
         if NSPointInRect(ourPoint, self.view.bounds) {
             updateStatus(point: ourPoint)
             if selection?.isSelected ?? false {
