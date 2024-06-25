@@ -384,7 +384,7 @@ extension SequenceController {
                 do{
                     topStatus = "Rendering data"
                    
-                    try  itemManager.renderLightData(background: true)
+                    try  itemManager.renderLightData(background: false)
                 }
                 catch {
                     NSAlert(error: error).beginSheetModal(for: self.window!)

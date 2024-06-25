@@ -391,12 +391,14 @@ extension ItemController {
     
     
     override func mouseExited(with event: NSEvent) {
-        
-        endDrag(controller: selection, cancel: true,layer: originalLayer)
+        if currentDrag != .none {
+            endDrag(controller: selection, cancel: true,layer: originalLayer)
+        }
     }
     override func mouseDown(with event: NSEvent) {
         //if (self.view.window!.windowController as! SequenceController).isGridEnabled
         let ourPoint = convert(event: event)
+        clickTime = (ourPoint.x / dotsPerSecond).milliSeconds
         updateStatus(point: ourPoint)
         dragPoint = ourPoint
         originalLayer = layerForY(position: ourPoint.y)
@@ -444,7 +446,9 @@ extension ItemController {
                 layer = layerForY(position: ourPoint.y)
             }
              */
-            endDrag(controller: selection, cancel: false,layer:layer)
+            if currentDrag != .none {
+                endDrag(controller: selection, cancel: false,layer:layer)
+            }
         }
         currentDrag = .none
         currentCursor = nil
@@ -515,7 +519,7 @@ extension ItemController {
             // Ok, so what we need to do here, is find  the proped start and stop times
             let startMaybe = controller.view.frame.origin.x / dotsPerSecond
             let endMaybe = controller.view.frame.width / dotsPerSecond + startMaybe
-            guard let grid = (controller.view.window?.windowController as? SequenceController)!.gridForName(name: controller.effect!.gridName!) else {
+            guard let grid = (controller.view.window?.windowController as? SequenceController)?.gridForName(name: controller.effect!.gridName!) else {
                 // we should do an error here
                 NSAlert(error:GeneralError(errorMessage: "Unable to find grid \(controller.effect!.gridName ?? "none")")).beginSheetModal(for: self.view.window!)
                 // we need to reset the controller
@@ -760,6 +764,7 @@ extension ItemController {
             if index != nil {
                 self.sequenceItem!.effects.remove(at: index!)
             }
+            _ = selectEffect(controller: nil)
             doc.undoManager?.registerUndo(withTarget: doc, handler: { seq in
                 let controller = EffectController(nibName: nil, bundle: nil)
                 self.sequenceItem?.effects.append(effect!)

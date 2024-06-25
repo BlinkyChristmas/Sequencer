@@ -9,12 +9,14 @@ class SequenceVisualizationView : NSView {
         super.init(frame: frameRect)
         self.wantsLayer = true
         self.autoresizingMask = [.width,.height]
+        self.clipsToBounds = true 
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.wantsLayer = true
         self.autoresizingMask = [.width,.height]
+        self.clipsToBounds = true
     }
     
     override func draw(_ dirtyRect: NSRect) {

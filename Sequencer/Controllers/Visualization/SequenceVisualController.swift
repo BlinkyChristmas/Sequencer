@@ -9,11 +9,18 @@ class SequenceVisualController : NSWindowController {
     }
     @objc dynamic weak var itemManager:ItemManager?
     @objc dynamic var visualName: String?
-    var globalScale = 1.0
+    @IBOutlet var sequenceVisualizationView:SequenceVisualizationView?
+    @objc dynamic var globalScale = 1.0 {
+        didSet{
+            self.sequenceVisualizationView?.needsDisplay = true
+        }
+    }
     @objc dynamic var musicName: String?
     @objc dynamic var currentTime = 0.0 {
         didSet{
-            self.window?.contentView?.needsDisplay = true
+            if self.isWindowLoaded {
+                self.sequenceVisualizationView?.needsDisplay = true
+            }
         }
     }
     var frame:Int {
@@ -40,6 +47,7 @@ extension SequenceVisualController {
     }
     override func windowDidLoad() {
         self.window?.title = "Visualizer: \(visualName ?? "" ) - \(musicName ?? "")"
+       
     }
     func drawView() {
         guard let itemManager = itemManager else { return }
