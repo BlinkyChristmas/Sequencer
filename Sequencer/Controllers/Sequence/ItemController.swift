@@ -493,10 +493,10 @@ extension ItemController {
     }
 
     func determineCursorDrag(rect:NSRect,point:NSPoint) -> (DragType,NSCursor?) {
-        if point.x >= rect.origin.x && point.x <=  min(rect.origin.x + 5.0,rect.origin.x + (rect.size.width / 4.0))   {
+        if point.x >= rect.origin.x && point.x <=  min(rect.origin.x + 10.0,rect.origin.x + (rect.size.width / 4.0))   {
             return (DragType.extendLeft,NSCursor.resizeLeftRight)
         }
-        else if point.x <= rect.origin.x + rect.size.width && point.x >=  max(rect.origin.x + rect.size.width - 5.0 ,rect.origin.x + rect.size.width - rect.size.width/4.0){
+        else if point.x <= rect.origin.x + rect.size.width && point.x >=  max(rect.origin.x + rect.size.width - 10.0 ,rect.origin.x + rect.size.width - rect.size.width/4.0){
             return (DragType.extendRight,NSCursor.resizeLeftRight)
         }
         else if NSPointInRect(point, rect) {
