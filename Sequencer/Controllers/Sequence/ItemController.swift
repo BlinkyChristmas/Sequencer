@@ -413,6 +413,7 @@ extension ItemController {
         //if (self.view.window!.windowController as! SequenceController).isGridEnabled
         let ourPoint = convert(event: event)
         clickTime = (ourPoint.x / dotsPerSecond).milliSeconds
+        clickPoint = ourPoint
         updateStatus(point: ourPoint)
         dragPoint = ourPoint
         originalLayer = layerForY(position: ourPoint.y)

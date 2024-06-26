@@ -118,9 +118,10 @@ extension ItemEffect {
 extension ItemEffect {
     func isCoveredOrWillCover( effect:ItemEffect) -> Bool {
         guard effect.effectLayer == self.effectLayer else { return false}  // Get rid of the ones that are not on the same layer
-        guard (effect.startTime >  self.effectLayer) && (effect.endTime < self.effectLayer) else { return true }
-        guard (effect.startTime <=  self.effectLayer) && (effect.endTime >= self.effectLayer) else { return true }
-        return false 
+        if (effect.startTime >=  self.startTime) && (effect.endTime <= self.endTime) || (effect.startTime <=  self.startTime) && (effect.endTime >= self.endTime) {
+            return true
+        }
+        return false
 
     }
 }
