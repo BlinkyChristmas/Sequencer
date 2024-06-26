@@ -70,8 +70,10 @@ extension SequenceVisualController {
         if globalScale != 1.0 {
             baseTransform = AffineTransform(scale: globalScale)
         }
+        
         for controller in itemManager.detailControllers {
             if controller.lightBundle != nil {
+               
                 var transform:AffineTransform = .identity
                 if controller.sequenceItem!.visualScale != 1.0 {
                     transform.append(AffineTransform(scale: controller.sequenceItem!.visualScale))

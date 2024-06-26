@@ -130,7 +130,7 @@ extension Visual : XMLProtocol {
                             points?.append(point)
                         }
                         else {
-                            node = entry!.attribute(forName: "location")
+                            node = entry!.attribute(forName: "position")
                             if node?.stringValue != nil {
                                 let point = try CGPoint.pointFor(string: node!.stringValue!)
                                 if points == nil {
@@ -251,8 +251,10 @@ extension Visual {
             return pixelColor.nsColor
         default:
             guard let color = color else { return NSColor.clear }
+            
             let temp = color.setIntensity(value: pixelColor.floatRed)
-            return NSColor(cgColor: temp) ?? NSColor.clear
+            
+            return NSColor(cgColor: temp)!
  
         }
     }

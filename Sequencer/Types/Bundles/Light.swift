@@ -142,6 +142,7 @@ extension Light {
                 }
                 else {
                     color.setStroke()
+                    
                     visual.path!.stroke()
                 }
             }
