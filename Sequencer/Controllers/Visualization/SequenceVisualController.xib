@@ -48,17 +48,17 @@
                         </connections>
                     </textField>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="6Ai-6K-PAE" customClass="SequenceVisualizationView" customModule="Sequencer" customModuleProvider="target">
-                        <rect key="frame" x="20" y="20" width="766" height="204"/>
+                        <rect key="frame" x="0.0" y="0.0" width="806" height="224"/>
                     </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hz8-Ed-IW4" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="1" id="KqY-eD-apc"/>
-                    <constraint firstAttribute="trailing" secondItem="6Ai-6K-PAE" secondAttribute="trailing" constant="20" symbolic="YES" id="SFE-q1-36x"/>
-                    <constraint firstItem="6Ai-6K-PAE" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="Z53-sg-qUq"/>
+                    <constraint firstAttribute="trailing" secondItem="6Ai-6K-PAE" secondAttribute="trailing" id="SFE-q1-36x"/>
+                    <constraint firstItem="6Ai-6K-PAE" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="Z53-sg-qUq"/>
                     <constraint firstItem="Hz8-Ed-IW4" firstAttribute="firstBaseline" secondItem="L8j-sl-JC3" secondAttribute="firstBaseline" id="b1Q-XT-JHn"/>
                     <constraint firstItem="6Ai-6K-PAE" firstAttribute="top" secondItem="Hz8-Ed-IW4" secondAttribute="bottom" constant="1" id="bf4-tT-t17"/>
                     <constraint firstItem="Hz8-Ed-IW4" firstAttribute="leading" secondItem="L8j-sl-JC3" secondAttribute="trailing" constant="8" symbolic="YES" id="feK-Fc-WkK"/>
-                    <constraint firstAttribute="bottom" secondItem="6Ai-6K-PAE" secondAttribute="bottom" constant="20" symbolic="YES" id="plu-g9-QW7"/>
+                    <constraint firstAttribute="bottom" secondItem="6Ai-6K-PAE" secondAttribute="bottom" id="plu-g9-QW7"/>
                     <constraint firstAttribute="trailing" secondItem="Hz8-Ed-IW4" secondAttribute="trailing" constant="20" symbolic="YES" id="z26-3T-s8b"/>
                 </constraints>
             </view>
