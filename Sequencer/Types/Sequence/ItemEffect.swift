@@ -112,3 +112,15 @@ extension ItemEffect {
         //Swift.print(" startTime: \(self.startTime)  endTime: \(self.endTime)")
     }
 }
+
+
+// ========== Covering support
+extension ItemEffect {
+    func isCoveredOrWillCover( effect:ItemEffect) -> Bool {
+        guard effect.effectLayer == self.effectLayer else { return false}  // Get rid of the ones that are not on the same layer
+        guard (effect.startTime >  self.effectLayer) && (effect.endTime < self.effectLayer) else { return true }
+        guard (effect.startTime <=  self.effectLayer) && (effect.endTime >= self.effectLayer) else { return true }
+        return false 
+
+    }
+}

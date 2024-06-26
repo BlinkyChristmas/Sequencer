@@ -264,6 +264,15 @@ extension ItemController {
     @objc dynamic var activeGrid:TimeGrid? {
         return (self.view.window?.windowController as? SequenceController)!.activeGrid
     }
+    
+    func checkForCoverage(effect:ItemEffect) -> ItemEffect? {
+        for child in self.sequenceItem!.effects  {
+            if effect.isCoveredOrWillCover(effect: child) {
+                return child
+            }
+        }
+        return nil
+    }
 }
 
 // ======= View Management
@@ -293,6 +302,7 @@ extension ItemController {
         guard let data = NSPasteboard.general.data(forType: .sequenceEffect) else { return }
         let decoder = JSONDecoder()
         var errorName:String?
+        let pasteLayer = layerForY(position: clickPoint.y)
         let master = self.view.window!.windowController as! SequenceController
         let doc = master.document as! SequenceDocument
         do {
@@ -313,7 +323,11 @@ extension ItemController {
             }
             item.startTime = startTime!
             item.endTime = endTime!
-            
+            item.effectLayer = pasteLayer
+            let coverEffect = checkForCoverage(effect: item)
+            if coverEffect != nil {
+                throw GeneralError(errorMessage: "Effect: \(item.description) would be covered or cover: \(coverEffect!.description)" )
+            }
             // now , we can actually do something
             let undo = doc.undoManager
             
@@ -596,7 +610,12 @@ extension ItemController {
             effect.effectLayer = self.createEffectDialog.effectLayer
             effect.startTime = self.createEffectDialog.startTime.milliSeconds
             effect.endTime = self.createEffectDialog.endTime.milliSeconds
-            
+            let coverEffect = self.checkForCoverage(effect: effect)
+            if coverEffect != nil {
+                NSAlert(error:  GeneralError(errorMessage: "Effect: \(effect.description) would be covered or cover: \(coverEffect!.description)" )).beginSheetModal(for: self.view.window!)
+                return
+            }
+
             let controller = EffectController(nibName: nil, bundle: nil)
             self.sequenceItem?.effects.append(effect)
             
@@ -657,7 +676,12 @@ extension ItemController {
             effect.effectLayer = self.createEffectDialog.effectLayer
             effect.startTime = self.createEffectDialog.startTime.milliSeconds
             effect.endTime = self.createEffectDialog.endTime.milliSeconds
-            
+            let coverEffect = self.checkForCoverage(effect: effect)
+            if coverEffect != nil {
+                NSAlert(error:  GeneralError(errorMessage: "Effect: \(effect.description) would be covered or cover: \(coverEffect!.description)" )).beginSheetModal(for: self.view.window!)
+                return
+            }
+
             let controller = EffectController(nibName: nil, bundle: nil)
             self.sequenceItem?.effects.append(effect)
             
