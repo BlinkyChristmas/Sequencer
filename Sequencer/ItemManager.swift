@@ -76,6 +76,7 @@ class ItemManager : NSObject {
         }
     }
     
+    
     func messingRound2() throws {
         var tasks = [Task<(),Never>]()
         for controller in detailControllers {
@@ -135,7 +136,20 @@ class ItemManager : NSObject {
         }
                 
     }
+    func renderAllData() async {
+        do{
+            for controller in detailControllers {
+                try await controller.renderData()
+            }
+        }
+        catch{
+            // We should do something with the array
+            await NSAlert(error: GeneralError(errorMessage:"Error rendering data",failure: error.localizedDescription)).beginSheetModal(for: self.master!.window!)
+        }
 
+    }
+    
+    
 }
 
 // ============ Height/Shuffle Managment

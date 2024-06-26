@@ -13,6 +13,17 @@ class SequenceVisualController : NSWindowController {
     @objc dynamic var globalScale = 1.0 {
         didSet{
             self.sequenceVisualizationView?.needsDisplay = true
+            // We should resize the window
+            guard self.window != nil else { return }
+            let size = self.window!.frame.size
+            let contentSize = self.window!.contentView!.frame.size
+            let adderWidth = size.width - contentSize.width
+            let adderHeight  = size.height - contentSize.height
+            
+            let width = (contentSize.width / oldValue ) * globalScale
+            let height = (contentSize.height / oldValue) * globalScale
+            self.window!.setFrame(NSRect(origin: self.window!.frame.origin, size: NSSize(width: width + adderWidth , height: height + adderHeight)), display: true)
+            
         }
     }
     @objc dynamic var musicName: String?

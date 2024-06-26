@@ -95,6 +95,9 @@ class ItemController : NSViewController {
         }
         try self.renderData(masterController: master, document: doc, ourBundle: ourBundle, imageBase: imageBase, patternBase: patternBase)
     }
+    func testRender() async throws {
+        try self.renderData()
+    }
 }
 
 

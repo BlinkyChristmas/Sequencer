@@ -522,6 +522,7 @@ extension SequenceController {
 }
 // =========== Light Data Management
 extension SequenceController {
+    /*
     @IBAction func renderLightData(_ sender: Any? ) {
         do {
             try itemManager.renderLightData(background: true)
@@ -530,14 +531,20 @@ extension SequenceController {
             NSAlert(error: error).beginSheetModal(for: self.window!)
         }
     }
+     */
     @IBAction func renderInLineLightData( _ sender: Any?){
+        
         do {
             try itemManager.renderLightData(background: false)
         }
         catch {
             NSAlert(error: error).beginSheetModal(for: self.window!)
         }
-
+        /*
+        Task {
+            await self.itemManager.renderAllData()
+        }
+         */
     }
 }
 
