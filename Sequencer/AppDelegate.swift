@@ -93,6 +93,7 @@ extension AppDelegate {
             var dataOffset = 0
             untitled.visualizationName = visualalization.name
             untitled.visualScale = visualalization.scale
+            untitled.visualSize = visualalization.visualSize!
             untitled.musicName = self.newSequenceDialog.music
             for item in visualalization.visualItems {
                 let seqItem = SeqItem()

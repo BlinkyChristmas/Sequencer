@@ -358,6 +358,15 @@ extension SequenceController {
             let frameRect = self.sequenceVisualizationController.window!.frame
             let newRect = NSRect(origin: frameRect.origin, size: size)
             self.sequenceVisualizationController.window!.setFrame(newRect, display: true)
+            let oldValue = 1.0
+            let globalScale = self.sequenceVisualizationController.globalScale
+            let contentSize = self.sequenceVisualizationController!.sequenceVisualizationView!.frame.size
+            let adderWidth = size.width - contentSize.width
+            let adderHeight  = size.height - contentSize.height
+             
+            let width = (contentSize.width / oldValue ) * globalScale
+            let height = (contentSize.height / oldValue) * globalScale
+            self.sequenceVisualizationController.window!.setFrame(NSRect(origin: self.window!.frame.origin, size: NSSize(width: width + adderWidth , height: height + adderHeight)), display: true)
         }
         
         musicPlayer.loadMusic(url: (NSApp.delegate as! AppDelegate).settingsData.musicDirectory!.appending(path: (self.document as! SequenceDocument).musicName!).appendingPathExtension(for: .wav))
@@ -522,7 +531,6 @@ extension SequenceController {
 }
 // =========== Light Data Management
 extension SequenceController {
-    /*
     @IBAction func renderLightData(_ sender: Any? ) {
         do {
             try itemManager.renderLightData(background: true)
@@ -531,7 +539,6 @@ extension SequenceController {
             NSAlert(error: error).beginSheetModal(for: self.window!)
         }
     }
-     */
     @IBAction func renderInLineLightData( _ sender: Any?){
         
         do {

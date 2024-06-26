@@ -16,7 +16,7 @@ class SequenceVisualController : NSWindowController {
             // We should resize the window
             guard self.window != nil else { return }
             let size = self.window!.frame.size
-            let contentSize = self.window!.contentView!.frame.size
+            let contentSize = self.sequenceVisualizationView!.frame.size
             let adderWidth = size.width - contentSize.width
             let adderHeight  = size.height - contentSize.height
             
@@ -58,7 +58,10 @@ extension SequenceVisualController {
     }
     override func windowDidLoad() {
         self.window?.title = "Visualizer: \(visualName ?? "" ) - \(musicName ?? "")"
-       
+        let temp = self.globalScale
+        self.globalScale = temp 
+
+        
     }
     func drawView() {
         guard let itemManager = itemManager else { return }

@@ -9,7 +9,8 @@ struct Visualization {
     var name:String?
     var scale = 1.0
     var screenCoordinates:NSPoint?
-    var screenSize:NSSize?
+    var visualSize:NSSize?
+    var visualScale = NSSize.zero
     
     
 }
@@ -49,11 +50,11 @@ extension Visualization {
                 screenCoordinates = temp
             }
         }
-        node = root.attribute(forName: "screenSize")
+        node = root.attribute(forName: "visualSize")
         if node?.stringValue != nil {
             let temp = try? NSSize.sizeFor(string: node!.stringValue!)
             if temp != nil {
-                screenSize = temp
+                visualSize = temp
             }
         }
 
