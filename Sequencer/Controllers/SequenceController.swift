@@ -479,7 +479,7 @@ extension SequenceController {
         panel.directoryURL = (NSApp.delegate as! AppDelegate).settingsData.lightDirectory
         panel.beginSheetModal(for: self.window!) { response in
             guard response == .OK else { return }
-            self.renderAndSave(offsets: self.exportDialog.exportItems, lightURL: panel.url!)
+            self.renderAndSave(offsets:exportItems, lightURL: panel.url!)
         }
     }
     
@@ -511,6 +511,7 @@ extension SequenceController {
                         }
                     }
                 }
+                
             }
             let lightFile = LightFile(frameCount: frameCount, frameLength: frameLength, musicName: self.musicPlayer.musicTitle, framePeriod: Double(BlinkyGlobals.framePeriod)/1000.0, lightData: frameData)
             try lightFile.saveTo(url: lightURL)
