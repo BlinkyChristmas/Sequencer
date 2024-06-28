@@ -152,6 +152,7 @@ func applyRandomPixelEffect(frames: inout [[PixelColor]], frameOffset:Int,frameC
 }
 
 func applyShimmerPixelEffect(frames: inout [[PixelColor]], frameOffset:Int,frameCount:Int, lightIndex:Int, startColor:PixelColor,endColor:PixelColor,maskColor:PixelColor ) {
+    /*
     var blankColor = false
     for frame in frameOffset..<frameOffset+frameCount {
         if blankColor {
@@ -162,6 +163,29 @@ func applyShimmerPixelEffect(frames: inout [[PixelColor]], frameOffset:Int,frame
              blankColor = !blankColor
         }
     }
+     */
+    let holdTime = maskColor.red / 32
+    var blank = false
+    var resetTime = holdTime
+    for frame in frameOffset..<frameOffset+frameCount {
+        if !blank {
+             resetTime -= 1
+            if resetTime < 0 {
+                blank = !blank
+                resetTime = holdTime
+            }
+        }
+        else {
+            frames[frame][lightIndex] = PixelColor()
+            resetTime -= 1
+            if resetTime < 0 {
+                blank = !blank
+                resetTime = holdTime
+            }
+
+        }
+    }
+
 }
 
 func applySparklePixelEffect(frames: inout [[PixelColor]], frameOffset:Int,frameCount:Int, lightIndex:Int, startColor:PixelColor,endColor:PixelColor,maskColor:PixelColor ) {
