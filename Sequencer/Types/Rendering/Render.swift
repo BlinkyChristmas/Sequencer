@@ -164,12 +164,12 @@ func applyShimmerPixelEffect(frames: inout [[PixelColor]], frameOffset:Int,frame
         }
     }
      */
-    let holdTime = maskColor.red / 32
+    let holdTime = Int(maskColor.red) / 32
     var blank = false
     var resetTime = holdTime
     for frame in frameOffset..<frameOffset+frameCount {
         if !blank {
-             resetTime -= 1
+            resetTime -= 1
             if resetTime < 0 {
                 blank = !blank
                 resetTime = holdTime
