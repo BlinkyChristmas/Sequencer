@@ -89,11 +89,9 @@
 		56A8C1952C235FE10032E1B5 /* SequenceVisualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1942C235FE10032E1B5 /* SequenceVisualController.swift */; };
 		56A8C1972C2360060032E1B5 /* SequenceVisualController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C1962C2360060032E1B5 /* SequenceVisualController.xib */; };
 		56A8C1992C2360AE0032E1B5 /* SequenceVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1982C2360AE0032E1B5 /* SequenceVisualizationView.swift */; };
-		56A8C19F2C258B010032E1B5 /* AccessoryVisualizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C19E2C258B010032E1B5 /* AccessoryVisualizerController.swift */; };
-		56A8C1A12C258B3A0032E1B5 /* AccessoryVisualizerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C1A02C258B3A0032E1B5 /* AccessoryVisualizerController.xib */; };
-		56A8C1A32C258E240032E1B5 /* VisualizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1A22C258E240032E1B5 /* VisualizerController.swift */; };
-		56A8C1A52C258E980032E1B5 /* VisualizerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C1A42C258E980032E1B5 /* VisualizerController.xib */; };
-		56A8C1A72C258EC30032E1B5 /* VisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C1A62C258EC30032E1B5 /* VisualizationView.swift */; };
+		56A8C21E2C2D74600032E1B5 /* VisualizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C21D2C2D74600032E1B5 /* VisualizationController.swift */; };
+		56A8C2202C2D74680032E1B5 /* VisualizationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A8C21F2C2D74680032E1B5 /* VisualizationController.xib */; };
+		56A8C2222C2D74890032E1B5 /* VisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C2212C2D74890032E1B5 /* VisualizationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,11 +180,9 @@
 		56A8C1942C235FE10032E1B5 /* SequenceVisualController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceVisualController.swift; sourceTree = "<group>"; };
 		56A8C1962C2360060032E1B5 /* SequenceVisualController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SequenceVisualController.xib; sourceTree = "<group>"; };
 		56A8C1982C2360AE0032E1B5 /* SequenceVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceVisualizationView.swift; sourceTree = "<group>"; };
-		56A8C19E2C258B010032E1B5 /* AccessoryVisualizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryVisualizerController.swift; sourceTree = "<group>"; };
-		56A8C1A02C258B3A0032E1B5 /* AccessoryVisualizerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessoryVisualizerController.xib; sourceTree = "<group>"; };
-		56A8C1A22C258E240032E1B5 /* VisualizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizerController.swift; sourceTree = "<group>"; };
-		56A8C1A42C258E980032E1B5 /* VisualizerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisualizerController.xib; sourceTree = "<group>"; };
-		56A8C1A62C258EC30032E1B5 /* VisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizationView.swift; sourceTree = "<group>"; };
+		56A8C21D2C2D74600032E1B5 /* VisualizationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizationController.swift; sourceTree = "<group>"; };
+		56A8C21F2C2D74680032E1B5 /* VisualizationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisualizationController.xib; sourceTree = "<group>"; };
+		56A8C2212C2D74890032E1B5 /* VisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,7 +340,7 @@
 		56A8C1172C1B2FA40032E1B5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				56A8C1A62C258EC30032E1B5 /* VisualizationView.swift */,
+				56A8C2212C2D74890032E1B5 /* VisualizationView.swift */,
 				56A8C1982C2360AE0032E1B5 /* SequenceVisualizationView.swift */,
 				56A8C1182C1B35480032E1B5 /* BackgroundView.swift */,
 				56A8C11A2C1B37880032E1B5 /* BorderedView.swift */,
@@ -402,10 +398,8 @@
 			children = (
 				56A8C1942C235FE10032E1B5 /* SequenceVisualController.swift */,
 				56A8C1962C2360060032E1B5 /* SequenceVisualController.xib */,
-				56A8C19E2C258B010032E1B5 /* AccessoryVisualizerController.swift */,
-				56A8C1A02C258B3A0032E1B5 /* AccessoryVisualizerController.xib */,
-				56A8C1A22C258E240032E1B5 /* VisualizerController.swift */,
-				56A8C1A42C258E980032E1B5 /* VisualizerController.xib */,
+				56A8C21F2C2D74680032E1B5 /* VisualizationController.xib */,
+				56A8C21D2C2D74600032E1B5 /* VisualizationController.swift */,
 			);
 			path = Visualization;
 			sourceTree = "<group>";
@@ -495,7 +489,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56A8C1A52C258E980032E1B5 /* VisualizerController.xib in Resources */,
 				56A8C14B2C1C9BB20032E1B5 /* ItemController.xib in Resources */,
 				56A8C1812C2092F70032E1B5 /* NewSequenceDialog.xib in Resources */,
 				56A8C1792C1F5A230032E1B5 /* ModifyTimingGridDialog.xib in Resources */,
@@ -503,8 +496,8 @@
 				56A8C1512C1CDAFE0032E1B5 /* CreateEffectDialog.xib in Resources */,
 				56A8C1392C1C67D70032E1B5 /* TimeNowController.xib in Resources */,
 				56A8C16C2C1F1D130032E1B5 /* CreateTimeGridDialog.xib in Resources */,
+				56A8C2202C2D74680032E1B5 /* VisualizationController.xib in Resources */,
 				56A8C1702C1F21750032E1B5 /* ReferenceGridController.xib in Resources */,
-				56A8C1A12C258B3A0032E1B5 /* AccessoryVisualizerController.xib in Resources */,
 				56A8C1622C1DF0010032E1B5 /* TimeGridController.xib in Resources */,
 				56A8C1002C19F0F20032E1B5 /* SettingsDialog.xib in Resources */,
 				56A8C0CC2C19BDEE0032E1B5 /* Assets.xcassets in Resources */,
@@ -526,7 +519,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56A8C1A32C258E240032E1B5 /* VisualizerController.swift in Sources */,
 				56A8C1112C1A15710032E1B5 /* SeqItem.swift in Sources */,
 				56A8C1022C1A0B4E0032E1B5 /* SequenceController.swift in Sources */,
 				56A8C1882C20FCF00032E1B5 /* PatternCache.swift in Sources */,
@@ -559,13 +551,13 @@
 				56A8C1912C23234B0032E1B5 /* ExportLightDialog.swift in Sources */,
 				56A8C10B2C1A0D2D0032E1B5 /* SynchronizedScollView.swift in Sources */,
 				56A8C0E92C19CAE90032E1B5 /* NSColor+extensions.swift in Sources */,
+				56A8C21E2C2D74600032E1B5 /* VisualizationController.swift in Sources */,
 				56A8C1582C1CE6410032E1B5 /* Light.swift in Sources */,
 				56A8C1732C1F57C40032E1B5 /* DeleteTimeGridDialog.swift in Sources */,
 				56A8C1772C1F59FA0032E1B5 /* ModifyTimingGridDialog.swift in Sources */,
 				56A8C15B2C1CE6410032E1B5 /* Visualization.swift in Sources */,
 				56A8C1852C20D4E40032E1B5 /* TransitionType.swift in Sources */,
 				56A8C1992C2360AE0032E1B5 /* SequenceVisualizationView.swift in Sources */,
-				56A8C19F2C258B010032E1B5 /* AccessoryVisualizerController.swift in Sources */,
 				56A8C1592C1CE6410032E1B5 /* Visual.swift in Sources */,
 				56A8C1952C235FE10032E1B5 /* SequenceVisualController.swift in Sources */,
 				56A8C1452C1C77C30032E1B5 /* ItemInfoController.swift in Sources */,
@@ -581,7 +573,7 @@
 				56A8C17D2C20612E0032E1B5 /* DetailItemView.swift in Sources */,
 				56A8C1162C1A61E30032E1B5 /* ScrollView+extensions.swift in Sources */,
 				56A8C1642C1DF03C0032E1B5 /* TimeGridView.swift in Sources */,
-				56A8C1A72C258EC30032E1B5 /* VisualizationView.swift in Sources */,
+				56A8C2222C2D74890032E1B5 /* VisualizationView.swift in Sources */,
 				56A8C0FE2C19EDC60032E1B5 /* SettingsDialog.swift in Sources */,
 				56A8C1312C1C65B20032E1B5 /* GridContainer.swift in Sources */,
 				56A8C14F2C1CDACF0032E1B5 /* CreateEffectDialog.swift in Sources */,
@@ -740,7 +732,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52PWP3G4T7;
+				DEVELOPMENT_TEAM = CF264WE69M;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sequencer/Info.plist;
@@ -768,7 +760,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52PWP3G4T7;
+				DEVELOPMENT_TEAM = CF264WE69M;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sequencer/Info.plist;

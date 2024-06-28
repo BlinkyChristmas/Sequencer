@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SequenceController" customModule="Sequencer" customModuleProvider="target">
             <connections>
-                <outlet property="accessoryVisualizationController" destination="dMf-0e-qPK" id="lVh-nv-qdF"/>
                 <outlet property="createGridDialog" destination="dkD-SM-zxf" id="9dQ-rF-lab"/>
                 <outlet property="deleteTimeGridDialog" destination="zxB-GK-LMd" id="y8l-W0-aao"/>
                 <outlet property="exportDialog" destination="8fw-5U-58K" id="SEf-Sp-CDt"/>
@@ -669,7 +668,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
             </connections>
-            <point key="canvasLocation" x="-128.5" y="-409.5"/>
+            <point key="canvasLocation" x="1" y="-418"/>
         </window>
         <customObject id="Qmm-cr-vJl" customClass="MusicPlayer" customModule="Sequencer" customModuleProvider="target"/>
         <userDefaultsController representsSharedInstance="YES" id="ZtA-g0-uMp"/>
@@ -703,7 +702,6 @@
         <customObject id="zxB-GK-LMd" customClass="DeleteTimeGridDialog" customModule="Sequencer" customModuleProvider="target"/>
         <customObject id="8fw-5U-58K" customClass="ExportLightDialog" customModule="Sequencer" customModuleProvider="target"/>
         <customObject id="1q3-lg-mQv" customClass="ModifyTimingGridDialog" customModule="Sequencer" customModuleProvider="target"/>
-        <customObject id="dMf-0e-qPK" customClass="AccessoryVisualizerController" customModule="Sequencer" customModuleProvider="target"/>
         <customObject id="5cQ-JU-TdO" customClass="SequenceVisualController" customModule="Sequencer" customModuleProvider="target"/>
     </objects>
 </document>

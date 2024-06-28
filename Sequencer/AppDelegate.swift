@@ -89,13 +89,13 @@ extension AppDelegate {
         guard value == .OK else { return}
         do {
             let untitled = (try NSDocumentController.shared.makeUntitledDocument(ofType:BlinkyGlobals.sequenceIdentifier )) as! SequenceDocument
-            let visualalization = try Visualization(url: newSequenceDialog.selectedVisualization!, bundles: self.bundleDictionay)
+            let visualization = try Visualization(url: newSequenceDialog.selectedVisualization!, bundles: self.bundleDictionay)
             var dataOffset = 0
-            untitled.visualizationName = visualalization.name
-            untitled.visualScale = visualalization.scale
-            untitled.visualSize = visualalization.visualSize!
+            untitled.visualizationName = visualization.name
+            untitled.visualScale = visualization.visualScale
+            untitled.visualSize = visualization.visualSize
             untitled.musicName = self.newSequenceDialog.music
-            for item in visualalization.visualItems {
+            for item in visualization.visualItems {
                 let seqItem = SeqItem()
                 seqItem.name = item.name
                 seqItem.bundleType = item.bundleType

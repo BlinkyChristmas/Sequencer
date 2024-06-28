@@ -7,33 +7,30 @@ class VisualizationView : NSView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.wantsLayer = true
         self.autoresizingMask = [.width,.height]
         self.autoresizesSubviews = true
-        
+        self.wantsLayer = true
+        self.clipsToBounds = true
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.wantsLayer = true
         self.autoresizingMask = [.width,.height]
         self.autoresizesSubviews = true
+        self.wantsLayer = true
+        self.clipsToBounds = true
+    }
+    
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        self.wantsLayer = true
+        self.layer?.backgroundColor = NSColor.black.cgColor
+        guard self.superview?.window?.windowController != nil else { return }
+        let controller = self.superview!.window!.windowController! as! VisualizationController
+        let origin = controller.visualization!.visualOrigin
+        self.window?.setFrameOrigin(origin)
     }
     
     override func draw(_ dirtyRect: NSRect) {
-        
-        super.draw(dirtyRect)
-        guard let controller = self.window?.windowController as? VisualizerController else {   return }
-        NSColor.black.setFill()
-        NSBezierPath.fill(self.bounds)
-        guard let data = try? controller.lightFile.frameFor(frameNumber: controller.currentFrame) else {  return }
-        guard !controller.visualization.visualItems.isEmpty else {  return }
-        if controller.scale != 1.0 {
-            (AffineTransform(scale: controller.scale) as NSAffineTransform).set()
-        }
-        for item in controller.visualization.visualItems {
-            item.draw(frame: Array(data[item.offset..<item.offset+item.lightBundle!.count]))
-        }
+        (self.window?.windowController as? VisualizationController)?.draw(dirtyRect)
     }
-    
 }

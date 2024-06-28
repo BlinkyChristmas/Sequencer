@@ -140,7 +140,6 @@ class SequenceController : NSWindowController {
     @IBOutlet var exportDialog:ExportLightDialog!
     
     @IBOutlet var sequenceVisualizationController:SequenceVisualController!
-    @IBOutlet var accessoryVisualizationController:AccessoryVisualizerController!
     
     var detailView = BackgroundView(frame: NSRect.zero)
     var infoView = BackgroundView(frame: NSRect.zero)
@@ -187,11 +186,6 @@ extension SequenceController {
     @IBAction func showVisualizer( _ sender: Any?) {
         sequenceVisualizationController.showWindow(sender)
     }
-    /*
-    @IBAction func showVisualAccessory(_ sender: Any?) {
-        accessoryVisualizationController.showWindow(self)
-    }
-     */
 }
 // ======= Time Grid Dialogs
 extension SequenceController {
@@ -376,9 +370,6 @@ extension SequenceController {
         // Put into here, anything that should happen on music load
         self.itemManager.addControllers(infoHolder: self.infoView)
         sequenceVisualizationController.musicName = musicPlayer.musicTitle
-        accessoryVisualizationController.musicName = musicPlayer.musicTitle
-        accessoryVisualizationController.masterController = self
-        accessoryVisualizationController.windowTitle = "Accessory Visualization Control: \( (self.document as! SequenceDocument).displayName ?? "unknown" )"
    }
     
     @IBAction func playMusic(_ sender : Any?)  {

@@ -114,24 +114,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="yFI-Yc-gjG"/>
-                            <menuItem title="Visualization" id="8Hi-fg-PeI">
+                            <menuItem title="Visualization" id="m2N-Pn-A2U">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Visualization" id="SrT-Kr-Hkr">
-                                    <items>
-                                        <menuItem title="Accessory" enabled="NO" id="jB5-hs-hqp">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="showVisualAccessory:" target="-1" id="BiV-dN-Icv"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Sequence" id="88T-QV-4f5">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="showVisualizer:" target="-1" id="pP4-5Y-Djg"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                                <connections>
+                                    <action selector="showVisualizer:" target="-1" id="dd8-Co-EhF"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="TX2-y5-f4S"/>
                             <menuItem title="Export" id="1Ho-5n-Uwx">

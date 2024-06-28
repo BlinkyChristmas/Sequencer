@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="VisualizationController" customModule="Visualizer" customModuleProvider="target">
+            <connections>
+                <outlet property="visualView" destination="btd-Nl-b28" id="GJQ-ji-Dsy"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="OYg-Q1-WOT"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="2046" y="675" width="737" height="135"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="5120" height="1415"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="737" height="135"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fzs-zO-OXY">
+                        <rect key="frame" x="595" y="115" width="41" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale:" id="8pc-hg-3qg">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-ka-J8N">
+                        <rect key="frame" x="642" y="112" width="75" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="Nii-eo-Bx7"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0OF-sf-C4q">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="QkY-ef-Rte">
+                                <integer key="multiplier" value="100"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="enabled" keyPath="isPlaying" id="ggt-8V-kxB">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="-2" name="value" keyPath="visualScale" id="zZX-A2-hFO"/>
+                        </connections>
+                    </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="btd-Nl-b28" customClass="VisualizationView" customModule="Visualizer" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="737" height="110"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="btd-Nl-b28" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="84c-lb-i2M"/>
+                    <constraint firstItem="Qd6-ka-J8N" firstAttribute="firstBaseline" secondItem="fzs-zO-OXY" secondAttribute="firstBaseline" id="BMz-no-Dkj"/>
+                    <constraint firstItem="Qd6-ka-J8N" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="2" id="I6M-nu-hgc"/>
+                    <constraint firstAttribute="trailing" secondItem="Qd6-ka-J8N" secondAttribute="trailing" constant="20" symbolic="YES" id="M8e-sC-2Kf"/>
+                    <constraint firstItem="btd-Nl-b28" firstAttribute="top" secondItem="Qd6-ka-J8N" secondAttribute="bottom" constant="2" id="NDZ-HX-bF6"/>
+                    <constraint firstAttribute="bottom" secondItem="btd-Nl-b28" secondAttribute="bottom" id="Pfq-dB-Idq"/>
+                    <constraint firstAttribute="trailing" secondItem="btd-Nl-b28" secondAttribute="trailing" id="Zil-g1-6z0"/>
+                    <constraint firstItem="Qd6-ka-J8N" firstAttribute="leading" secondItem="fzs-zO-OXY" secondAttribute="trailing" constant="8" symbolic="YES" id="lvg-YF-eae"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="6ZZ-0F-Z11"/>
+            </connections>
+            <point key="canvasLocation" x="-87" y="52"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="rF8-oY-6E1"/>
+    </objects>
+</document>
