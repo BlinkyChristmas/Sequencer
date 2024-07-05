@@ -601,7 +601,7 @@ extension ItemController {
         createEffectDialog.startTime = selectedController.effect!.startTime.milliSeconds
         createEffectDialog.endTime = selectedController.effect!.endTime.milliSeconds
         createEffectDialog.isModify = false
-        createEffectDialog.effectLayer = selectedController.effect!.effectLayer
+        createEffectDialog.effectLayer = selectedController.effect!.effectLayer + 1
         let master = self.view.window!.windowController as! SequenceController
         let seq = master.document as! SequenceDocument
         let undo =  seq.undoManager
