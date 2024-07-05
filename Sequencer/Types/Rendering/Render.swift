@@ -54,7 +54,7 @@ func renderSequence( duration:Double, effects:[ItemEffect], lightBundle:LightBun
                         let maskImage = try imageCache.imageFor(base: imageDirectory, key: pixelEffect.maskImage!)
                         let startTime = times[timeIndex]
                         let endTime = times[timeIndex+1]
-                        let (frameIndex,frameCount) = calculateFrameOffsetCount(startMill: startTime, endMilli: endTime, framePeriod: BlinkyGlobals.framePeriod)
+                        let (frameIndex,frameCount) = calculateFrameOffsetCount(startMilli: startTime, endMilli: endTime, framePeriod: BlinkyGlobals.framePeriod)
                         
                         for lightIndex in 0..<lightBundle.lights.count {
                             
