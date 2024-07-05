@@ -74,10 +74,10 @@ func renderSequence( duration:Double, effects:[ItemEffect], lightBundle:LightBun
     return frames
 }
 
-func calculateFrameOffsetCount(startMill:Int, endMilli:Int, framePeriod:Int) -> (Int,Int) {
-    let offset = startMill / framePeriod
-    let endoffset = endMilli / framePeriod
-    return (offset,(endoffset - offset) + 1 )
+func calculateFrameOffsetCount(startMilli:Int, endMilli:Int, framePeriod:Int) -> (Int,Int) {
+    let offset = (Double(startMilli)/1000.0) / (Double(framePeriod)/1000.0)
+    let endoffset = (Double(endMilli)/1000.0) / (Double(framePeriod)/1000.0)
+    return (Int(offset.rounded()),Int((endoffset - offset).rounded()) )
 }
 
 
