@@ -422,6 +422,13 @@
                                     <action selector="modifyTimeGrid:" target="-1" id="gZr-MV-40P"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="k7P-ag-MFt"/>
+                            <menuItem title="Normalize" id="WRH-dM-GNc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="normalizeGrids:" target="-1" id="X4x-88-sOV"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

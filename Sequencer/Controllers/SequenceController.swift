@@ -545,5 +545,32 @@ extension SequenceController {
         }
          */
     }
+    
+    @IBAction func normalizeGrids( _ sender: Any?) {
+        for grid in sequence.timeGrids {
+            var realEntries =  Set<Int>()
+            for entry in grid.timeEntries.sorted() {
+                var realEntry = entry / BlinkyGlobals.framePeriod
+                realEntry = realEntry * BlinkyGlobals.framePeriod
+                if entry % BlinkyGlobals.framePeriod > BlinkyGlobals.framePeriod/2 {
+                    realEntry += BlinkyGlobals.framePeriod
+                }
+                realEntries.insert(realEntry)
+            }
+            grid.timeEntries = realEntries
+        }
+        normalizePatterns()
+    }
+    func normalizePatterns() {
+        for item in sequence.sequenceItems {
+            for effect in item.effects {
+                let grid = gridForName(name: effect.gridName!)
+                let startTime = grid!.bestTimeFor(milliseconds: effect.startTime)
+                let endTime = grid!.bestTimeFor(milliseconds: effect.endTime)
+                effect.startTime = startTime!
+                effect.endTime = endTime!
+            }
+        }
+    }
 }
 
