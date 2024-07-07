@@ -560,6 +560,8 @@ extension SequenceController {
             grid.timeEntries = realEntries
         }
         normalizePatterns()
+        self.document?.updateChangeCount(.changeDone)
+        
     }
     func normalizePatterns() {
         for item in sequence.sequenceItems {
@@ -571,6 +573,7 @@ extension SequenceController {
                 effect.endTime = endTime!
             }
         }
+        self.itemManager.resetEffectOriginSize( scale:self.dotsPerSecond)
     }
 }
 

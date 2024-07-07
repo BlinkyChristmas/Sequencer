@@ -187,9 +187,6 @@ extension ItemManager {
         return origins
     }
     
-    func updateHeightOrigins() {
-        
-    }
     
     func findController(sequenceItem: SeqItem) -> Int? {
         return detailControllers.firstIndex { $0.sequenceItem == sequenceItem }
@@ -199,4 +196,15 @@ extension ItemManager {
         return detailControllers.firstIndex { $0 == controller }
     }
 
+    func resetEffectOriginSize(scale:Double) {
+        for item in detailControllers {
+            for effect in item.controllers {
+                let startTime = effect.effect!.startTime
+                let endTime = effect.effect!.endTime
+                let x = (Double(startTime) / 1000.0 ) * scale
+                let width = (Double(endTime - startTime) / 1000.0)
+                effect.view.frame = NSRect(x: x, y: effect.view.frame.origin.y, width: width, height: effect.view.frame.size.height)
+            }
+        }
+    }
 }
