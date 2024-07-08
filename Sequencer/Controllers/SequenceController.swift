@@ -575,6 +575,7 @@ extension SequenceController {
         }
         self.itemManager.resetEffectOriginSize( scale:self.dotsPerSecond)
         refreshView(view: self.scrollRight.documentView!)
+        self.shuffle()
     }
     func refreshView(view:NSView) {
         view.needsDisplay = true
