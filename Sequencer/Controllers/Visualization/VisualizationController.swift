@@ -88,7 +88,8 @@ class VisualizationController : NSWindowController {
                 if baseTransform != nil {
                     (baseTransform! as NSAffineTransform).set()
                 }
-                item.draw(frame: Array(data[item.offset..<item.offset+item.lightBundle!.count]))
+                let (_,maxOffset) = item.lightBundle!.rangeInFrame
+                item.draw(frame: Array(data[item.offset..<item.offset+maxOffset]))
             }
         }
     }

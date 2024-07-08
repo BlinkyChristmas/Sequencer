@@ -78,6 +78,10 @@ extension Light : XMLProtocol {
             throw NSError(domain: "Sequencer", code: 0, userInfo: [NSLocalizedDescriptionKey:"Missing name for 'Light'"])
         }
         name = node!.stringValue!
+        node = element.attribute(forName: "offset")
+        if node?.stringValue != nil {
+            offset = Int(node!.stringValue!) ?? 0
+        }
         
         node = element.attribute(forName: "origin")
         if node?.stringValue == nil {
@@ -222,6 +226,8 @@ extension LightBundle : XMLProtocol {
     
     init(element: XMLElement) throws {
         self.init()
+        var needsOffsetUpdate = true
+        
         guard element.name == "lightBundle" || element.name == "lightGroup" else {
             throw NSError(domain: "Sequencer", code: 0, userInfo: [NSLocalizedDescriptionKey:"Invalid element for 'lightBundle': \(element.name ?? "")"])
         }
@@ -261,12 +267,18 @@ extension LightBundle : XMLProtocol {
                 let entry = child as? XMLElement
                 if entry != nil {
                     if entry?.name == "lightSource" || entry?.name == "light" {
+                        let light = try Light(element: entry!)
+                        if light.offset != 0 {
+                            needsOffsetUpdate = false
+                        }
                         lights.append(try Light(element: entry!))
                     }
                 }
             }
         }
-        self.updateOffsets()
+        if needsOffsetUpdate {
+            self.updateOffsets()
+        }
 
     }
 }
@@ -292,6 +304,18 @@ extension LightBundle {
     }
     var count:Int {
         return lights.reduce(0, {$0 + $1.lightType.channels})
+    }
+    
+    var rangeInFrame: (Int,Int) {
+        var minOffset = Int.max
+        for light in lights {
+            minOffset = min(minOffset,light.offset)
+        }
+        var maxOffset = Int.min
+        for light in lights {
+            maxOffset = max(maxOffset,light.offset + light.lightType.channels)
+        }
+        return (minOffset,maxOffset)
     }
     
     var bundleImageDirectory:String {
