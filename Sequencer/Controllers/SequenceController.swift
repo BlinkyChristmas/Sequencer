@@ -566,9 +566,12 @@ extension SequenceController {
     func normalizePatterns() {
         for item in sequence.sequenceItems {
             for effect in item.effects {
-                let grid = gridForName(name: effect.gridName!)
-                let startTime = grid!.bestTimeFor(milliseconds: effect.startTime)
-                let endTime = grid!.bestTimeFor(milliseconds: effect.endTime)
+                guard let grid = gridForName(name: effect.gridName!) else {
+                    NSAlert(error: GeneralError(errorMessage: "Failure normalizing effect: \(effect.description)",failure: "Unable to locate grid: \(effect.gridName ?? "")")).beginSheetModal(for: self.window!)
+                    return
+                }
+                let startTime = grid.bestTimeFor(milliseconds: effect.startTime)
+                let endTime = grid.bestTimeFor(milliseconds: effect.endTime)
                 effect.startTime = startTime!
                 effect.endTime = endTime!
             }
