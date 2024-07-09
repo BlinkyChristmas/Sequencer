@@ -451,7 +451,8 @@ extension SequenceController {
                 NSAlert(error: GeneralError(errorMessage: "Could not find bundle type: \(item.bundleType!) for sequence Item: \(item.name ?? "") ")).beginSheetModal(for: self.window!)
                 return exportItems
             }
-            exportItems.append(ExportLightType(name: item.name, offset: item.dataOffset, count: lightBundle.count))
+            let (_,maxOffset) = lightBundle.rangeInFrame
+            exportItems.append(ExportLightType(name: item.name, offset: item.dataOffset, count: maxOffset))
         }
         return exportItems
 
@@ -485,6 +486,7 @@ extension SequenceController {
     
     func renderAndSave(offsets:[ExportLightType],lightURL:URL) {
         // Total number of channels in a frame will be
+        
         var frameLength = 0
         for item in offsets {
             frameLength = max(frameLength,item.offset + item.count)
