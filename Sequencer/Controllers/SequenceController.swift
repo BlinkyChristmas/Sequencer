@@ -307,6 +307,9 @@ extension SequenceController {
             self.shuffle()
             self.gridContainer.refreshViews()
         }
+        if self.gridForName(name: "Scratch") == nil  {
+            (self.document as? SequenceDocument)?.timeGrids.append(TimeGrid(name: "Scratch", color: BlinkyGlobals.scratchGridColor))
+        }
         scrollRight.hasHorizontalRuler = true
         scrollRight.rulersVisible = true
         scrollRight.registerScale(dotsPerSecond: dotsPerSecond, name: ourRulerName, abbreviation: ourRulerName)

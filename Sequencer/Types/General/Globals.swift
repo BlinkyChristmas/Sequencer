@@ -133,7 +133,7 @@ struct Keycode {
 
 extension UTType {
     static var sequence:UTType {
-        UTType(filenameExtension: "sequence",conformingTo: .xml)!
+        UTType(filenameExtension: "sequence")!
     }
     static var blinky:UTType {
         UTType(filenameExtension: "blinkybundle")!
